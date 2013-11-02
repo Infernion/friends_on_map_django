@@ -1,0 +1,12 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/home/infernion/Dev/friends_on_map"
+		}
+	],
+    "settings": {
+        "python_interpreter": "/home/infernion/Dev/friends_on_map/venv/bin/python"
+    }
+}

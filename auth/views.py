@@ -42,3 +42,7 @@ def require_email(request):
         backend = request.session['partial_pipeline']['backend']
         return redirect('social:complete', backend=backend)
     return render_to_response('email.html', RequestContext(request))
+
+def redirect_to_login(request):
+    return redirect('/login')
+    

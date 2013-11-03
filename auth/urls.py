@@ -3,8 +3,9 @@ from auth import views
 
 urlpatterns = patterns('',
         url(r'^signup-email/', views.signup_email),
-        url(r'^email-sent/', views.validation_sent),
+        #url(r'^email-sent/', views.validation_sent),
         url(r'^login/$', views.home),
         url(r'^done/$', views.done, name='done'),
-        url(r'^email/$', views.require_email, name='require_email'),
+        #url(r'^email/$', views.require_email, name='require_email'),
+        url('', views.redirect_to_login),
 )

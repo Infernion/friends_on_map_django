@@ -55,6 +55,10 @@ footer {
      .container {
      max-width: 100%;
      }
+     
+.container .jumbotron {
+        padding: 5px;
+}
  }
 
 #map-canvas {

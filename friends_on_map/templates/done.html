@@ -13,10 +13,19 @@
   {% endfor %}
 </ul>
 
-{% if plus_id %}
+<p>Associate:</p>
+<ul>
+  {% for name in backends.not_associated %}
+    <li>
+      <a href="{% url 'social:begin' name %}">{{ name }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% if vk_uid %}
 <div id="signinButton">
-  <span class="g-signin" data-scope="{{ plus_scope }}"
-                         data-clientid="{{ plus_id }}"
+  <span class="g-signin" data-scope="{{ vk_scope }}"
+                         data-clientid="{{ vk_id }}"
                          data-redirecturi="postmessage"
                          data-accesstype="offline"
                          data-cookiepolicy="single_host_origin"

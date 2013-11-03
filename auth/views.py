@@ -3,7 +3,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import login_required
 
-from social.backends.google import GooglePlusAuth
+from social.backends.vk import VKOAuth2
+from social.backends.facebook import FacebookOAuth2
 
 
 def login(request):
@@ -11,18 +12,22 @@ def login(request):
     if request.user.is_authenticated():
         return redirect('done')
     return render_to_response('login.html', {
-        'uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None)
+        'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),
+        'fb_uid': getattr(settings, 'SOCIAL_AUTH_FACEBOOK_KEY', None)
     }, RequestContext(request))
 
 
 @login_required
 def done(request):
     """Login complete view, displays user data"""
-    scope = ' '.join(GooglePlusAuth.DEFAULT_SCOPE)
+    vk_scope = ' '.join(VKOAuth2.DEFAULT_SCOPE)
+    fb_scope = ' '.join(FacebookOAuth2.DEFAULT_SCOPE)
     return render_to_response('done.html', {
         'user': request.user,
-        'plus_id': getattr(settings, 'SOCIAL_AUTH_GOOGLE_PLUS_KEY', None),
-        'plus_scope': scope
+        'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),
+        'fb_uid': getattr(settings, 'SOCIAL_AUTH_FACEBOOK_KEY', None),
+        'vk_scope': vk_scope,
+        'fb_scope': fb_scope,
     }, RequestContext(request))
 
 

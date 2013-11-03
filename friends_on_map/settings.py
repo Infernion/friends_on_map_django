@@ -175,10 +175,10 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.vk.VKOAuth2',
     'social.backends.email.EmailAuth',
     'social.backends.username.UsernameAuth',
-    'social.apps.django_app.utils.BackendWrapper',
+    #'social.apps.django_app.utils.BackendWrapper',
     'django.contrib.auth.backends.ModelBackend',
 )
-
+LOGIN_REDIRECT_URL = '/done'
 LOGIN_URL = '/login/'
 URL_PATH = ''
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'

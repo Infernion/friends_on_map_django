@@ -197,6 +197,17 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details'
 )
 
+SOCIAL_AUTH_FACEBOOK_KEY = '223307271163808'
+SOCIAL_AUTH_FACEBOOK_SECRET = '94cda17962cf0d13188880c3be3d82a0'
+SOCIAL_AUTH_VK_OAUTH2_KEY = '3972093'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'dlrYrcLQrA1dUdF8nAlE'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['friends']
+
+GMAP_API_KEY = 'AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M'
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '91es7q)2)4l%fukw30pji=gj^ah#871r11+8v-j+0fev(5^z$^'
+
 
 try:
     from .local import *

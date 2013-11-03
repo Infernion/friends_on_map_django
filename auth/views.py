@@ -6,12 +6,12 @@ from django.contrib.auth.decorators import login_required
 from social.backends.google import GooglePlusAuth
 
 
-def home(request):
+def login(request):
     """Home view, displays login mechanism"""
     if request.user.is_authenticated():
         return redirect('done')
-    return render_to_response('home.html', {
-        'plus_id': getattr(settings, 'SOCIAL_AUTH_GOOGLE_PLUS_KEY', None)
+    return render_to_response('login.html', {
+        'uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None)
     }, RequestContext(request))
 
 
@@ -43,6 +43,6 @@ def require_email(request):
         return redirect('social:complete', backend=backend)
     return render_to_response('email.html', RequestContext(request))
 
-def redirect_to_login(request):
-    return redirect('/login')
+def home(request):
+    pass
     

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block sidebar %}
+<a href="{% url 'social:begin' "facebook" %}"class="list-group-item">{% trans "Login to Facebook" %}</a> <br />
+<a href="{% url 'social:begin' "vk-oauth2" %}" class="list-group-item">{% trans "Login to VK.com" %}</a> <br />
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+  var signInCallback = function (result) {
+      if (result['error']) {
+        alert('An error happened:', result['error']);
+      } else {
+        $('#code').attr('value', result['code']);
+        $('#at').attr('value', result['access_token']);
+        $('#google-plus').submit();
+      }
+  };
+</script>
+{% endblock %}

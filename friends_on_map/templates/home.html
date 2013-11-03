@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load url from future %}
 
 {% block sidebar %}
-<a href="{% url 'social:begin' "facebook" %}"class="list-group-item">Facebook OAuth2</a> <br />
-<a href="{% url 'social:begin' "vk-oauth2" %}" class="list-group-item">VK.com OAuth2</a> <br />
+<a href="{% url 'social:begin' "facebook" %}"class="list-group-item">{% trans "Login to Facebook" %}</a> <br />
+<a href="{% url 'social:begin' "vk-oauth2" %}" class="list-group-item">{% trans "Login to VK.com" %}</a> <br />
 {% endblock %}
 
 {% block scripts %}

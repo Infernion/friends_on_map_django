@@ -20,14 +20,10 @@ def login(request):
 @login_required
 def done(request):
     """Login complete view, displays user data"""
-    vk_scope = ' '.join(VKOAuth2.DEFAULT_SCOPE)
-    fb_scope = ' '.join(FacebookOAuth2.DEFAULT_SCOPE)
     return render_to_response('done.html', {
         'user': request.user,
         'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),
         'fb_uid': getattr(settings, 'SOCIAL_AUTH_FACEBOOK_KEY', None),
-        'vk_scope': vk_scope,
-        'fb_scope': fb_scope,
     }, RequestContext(request))
 
 

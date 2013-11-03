@@ -55,15 +55,14 @@ footer {
      .container {
      max-width: 100%;
      }
-     
+
 .container .jumbotron {
         padding: 5px;
 }
  }
 
 #map-canvas {
-        height: 550px;
-        width: 1000px;
+        height: 600px;
         margin: 0px;
         padding: 0px
       }

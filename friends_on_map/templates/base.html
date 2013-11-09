@@ -55,8 +55,8 @@ window.onload = loadScript;
             <li><a href="#about">{% trans "About" %}</a></li>
             <li><a href="#contact">{% trans "Contact" %}</a></li>
           </ul>
-          <ul class="navbar-right"><!-- Set language start -->
-            <form action="/i18n/setlang/" method="post">
+          <ul class="nav navbar-right"><!-- Set language start -->
+            <form action="/i18n/setlang/" class="active" method="post">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}" />
             {% get_language_info_list for LANGUAGES as languages %}

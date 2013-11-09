@@ -22,34 +22,11 @@
   {% endfor %}
 </ul>
 
-{% if vk_uid %}
-<div id="signinButton">
-  <span class="g-signin" data-scope="{{ vk_scope }}"
-                         data-clientid="{{ vk_id }}"
-                         data-redirecturi="postmessage"
-                         data-accesstype="offline"
-                         data-cookiepolicy="single_host_origin"
-                         data-callback="signInCallback">
-  </span>
-</div>
 <div id="result"></div>
 {% endif %}
 {% endblock %}
 
 {% block head_scripts %}
-{% if plus_id %}
-<!-- Google+ Sign In -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript">
-  (function () {
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-  })();
-</script>
 
 <script type="text/javascript">
   var signInCallback = function (result) {

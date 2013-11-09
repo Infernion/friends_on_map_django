@@ -55,6 +55,10 @@ footer {
      .container {
      max-width: 100%;
      }
+     
+     input {
+        margin-top: 10px;
+     }
 
 .container .jumbotron {
         padding: 5px;

@@ -3,10 +3,6 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import login_required
 
-from social.backends.vk import VKOAuth2
-from social.backends.facebook import FacebookOAuth2
-
-
 def login(request):
     """Home view, displays login mechanism"""
     if request.user.is_authenticated():
@@ -20,29 +16,12 @@ def login(request):
 @login_required
 def done(request):
     """Login complete view, displays user data"""
+    request.user.set_extra_data('test')
     return render_to_response('done.html', {
         'user': request.user,
         'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),
         'fb_uid': getattr(settings, 'SOCIAL_AUTH_FACEBOOK_KEY', None),
     }, RequestContext(request))
-
-
-def signup_email(request):
-    return render_to_response('email_signup.html', {}, RequestContext(request))
-
-
-def validation_sent(request):
-    return render_to_response('validation_sent.html', {
-        'email': request.session.get('email_validation_address')
-    }, RequestContext(request))
-
-
-def require_email(request):
-    if request.method == 'POST':
-        request.session['saved_email'] = request.POST.get('email')
-        backend = request.session['partial_pipeline']['backend']
-        return redirect('social:complete', backend=backend)
-    return render_to_response('email.html', RequestContext(request))
 
 def home(request):
     pass

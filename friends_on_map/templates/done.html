@@ -22,15 +22,6 @@
   {% endfor %}
 </ul>
 
-{% if vk_uid %}
-<div id="signinButton">
-  <span class="vk-signin"data-clientid="{{ vk_uid }}"
-                         data-redirecturi="postmessage"
-                         data-accesstype="offline"
-                         data-cookiepolicy="single_host_origin"
-                         data-callback="signInCallback">
-  </span>
-</div>
 <div id="result"></div>
 {% endblock %}
 

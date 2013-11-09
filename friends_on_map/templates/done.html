@@ -2,7 +2,7 @@
 {% load url from future %}
 
 {% block sidebar %}
-<p>You are logged in as {{ user.username }}!</p>
+<p>You are logged in as {{ user.username }} {{ vk_uid }}!</p>
 
 <p>Associated:</p>
 <ul>
@@ -22,7 +22,17 @@
   {% endfor %}
 </ul>
 
+{% if vk_uid %}
+<div id="signinButton">
+  <span class="vk-signin"data-clientid="{{ vk_uid }}"
+                         data-redirecturi="postmessage"
+                         data-accesstype="offline"
+                         data-cookiepolicy="single_host_origin"
+                         data-callback="signInCallback">
+  </span>
+</div>
 <div id="result"></div>
+{% endblock %}
 
 {% block head_scripts %}
 

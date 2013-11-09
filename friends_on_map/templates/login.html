@@ -5,27 +5,6 @@
 {% block sidebar %}
 <a href="{% url 'social:begin' "facebook" %}"class="list-group-item">{% trans "Login to Facebook" %}</a> <br />
 <a href="{% url 'social:begin' "vk-oauth2" %}" class="list-group-item">{% trans "Login to VK.com" %}</a> <br />
-<script src="http://vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
-<script type="text/javascript">
-    VK.init(function() {
-            VK.addCallback("onApplicationAdded", requestRights);
-            VK.addCallback("onSettingsChanged", onSettingsChanged);
-        }
-    );
-
-    function startConnect() {
-        VK.callMethod('showInstallBox');
-    }
-
-    function requestRights() {
-        VK.callMethod('showSettingsBox', 1 + 2); // 1+2 is just an example
-    }
-
-    function onSettingsChanged(settings) {
-        window.location.reload();
-    }
-</script>
-<a href="#" onclick="startConnect(); return false;">Click to authenticate</a>
 {% endblock %}
 
 {% block scripts %}

@@ -16,7 +16,6 @@ def login(request):
 @login_required
 def done(request):
     """Login complete view, displays user data"""
-    request.user.set_extra_data('test')
     return render_to_response('done.html', {
         'user': request.user,
         'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),

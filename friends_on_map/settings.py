@@ -195,8 +195,9 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details',
     'auth.pipeline.get_user_friends',
+    'social.pipeline.user.user_details',
+
 )
 
 SOCIAL_AUTH_DISCONNECT_PIPELINE = (

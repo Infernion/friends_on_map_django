@@ -1,6 +1,6 @@
-import urllib
 
 def get_user_friends(strategy, details, response, uid, user, *args, **kwargs):
+    url = None
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(
         strategy.backend.name,
         uid

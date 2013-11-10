@@ -6,5 +6,5 @@ def get_user_friends(strategy, details, response, uid, user, *args, **kwargs):
         uid
     )
     if social:
-        extra_data = strategy.backend.extra_data(user, uid, response, details, 'test')
+        extra_data = strategy.backend.extra_data(user, uid, response, details)
         social.set_extra_data(extra_data)

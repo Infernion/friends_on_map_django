@@ -191,7 +191,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     # 'auth.app.pipeline.require_email',
-    #'social.pipeline.mail.mail_validation',
+    # 'social.pipeline.mail.mail_validation',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
@@ -208,12 +208,12 @@ SOCIAL_AUTH_DISCONNECT_PIPELINE = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '223307271163808'
 SOCIAL_AUTH_FACEBOOK_SECRET = '94cda17962cf0d13188880c3be3d82a0'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'friends']
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('friends','friends')]
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('friends','friends')]
 SOCIAL_AUTH_VK_OAUTH2_KEY = '3972093'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'dlrYrcLQrA1dUdF8nAlE'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
-SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = [('friends','friends')]
+# SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = [('friends','friends')]
 
 
 GMAP_API_KEY = 'AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M'

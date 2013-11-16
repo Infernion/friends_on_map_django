@@ -6,14 +6,4 @@ def save_picture(strategy, user, response, details,
 
     if is_new and strategy.backend.name == 'facebook':
         url = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
-
-        try:
-            response = request('GET', url, params={'type': 'large'})
-            response.raise_for_status()
-        except HTTPError:
-            pass
-    else:
-        profile = user.get_profile()
-        profile.profile_photo.save('{0}_social.jpg'.format(user.username),
-                                   ContentFile(response.content))
-        profile.save()
+    user.set_extra_data({'photo_url': url})

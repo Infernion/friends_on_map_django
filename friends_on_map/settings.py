@@ -182,8 +182,8 @@ LOGIN_REDIRECT_URL = '/done'
 LOGIN_URL = '/login/'
 URL_PATH = ''
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
-# SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
-SOCIAL_AUTH_STORAGE = 'auth.models.DjangoStorage'
+SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
+# SOCIAL_AUTH_STORAGE = 'auth.models.DjangoStorage'
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
@@ -210,7 +210,7 @@ SOCIAL_AUTH_DISCONNECT_PIPELINE = (
 SOCIAL_AUTH_FACEBOOK_KEY = '223307271163808'
 SOCIAL_AUTH_FACEBOOK_SECRET = '94cda17962cf0d13188880c3be3d82a0'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('birthdate', 'birthdate')]
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('friends', '')]
 SOCIAL_AUTH_VK_OAUTH2_KEY = '3972093'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'dlrYrcLQrA1dUdF8nAlE'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']

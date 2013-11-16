@@ -1,10 +1,17 @@
-
-def get_user_friends(strategy, details, response, uid, user, *args, **kwargs):
+def get_user_avatar(backend, details, response, social_user, uid,\
+                    user, *args, **kwargs):
     url = None
-    social = kwargs.get('social') or strategy.storage.user.get_social_auth(
-        strategy.backend.name,
-        uid
-    )
-    if social:
-        extra_data = strategy.backend.extra_data(user, uid, response, details)
-        social.set_extra_data(extra_data)
+    if backend.__class__ == FacebookBackend:
+        url = "http://graph.facebook.com/%s/picture?type=large" % response['id']
+ 
+    elif backend.__class__ == TwitterBackend:
+        url = response.get('profile_image_url', '').replace('_normal', '')
+ 
+    if url:
+        profile = user.get_profile()
+        avatar = urlopen(url).read()
+        fout = open(filepath, "wb") #filepath is where to save the image
+        fout.write(avatar)
+        fout.close()
+        profile.photo = url_to_image # depends on where you saved it
+        profile.save()

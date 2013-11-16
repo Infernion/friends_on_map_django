@@ -1,8 +1,9 @@
-from requests import request, HTTPError
-from django.core.files.base import ContentFile
+def get_user_avatar(strategy, details, response, social_user, uid,\
+                    user, *args, **kwargs):
+    url = None
+    if strategy.backend.name == 'facebook':
+        url = "http://graph.facebook.com/%s/picture?type=large" % response['id']
 
-def save_picture(strategy, user, response, details, social_user, is_new=False, *args, **kwargs):
-
-    #if is_new and strategy.backend.name == 'facebook':
-    url = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
-    social_user.set_extra_data('url':url)
+    if url:
+        avatar = url
+        social_user.set_extra_data({'photo': url})

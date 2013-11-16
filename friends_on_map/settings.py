@@ -197,7 +197,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     # 'auth.pipeline.get_user_friends',
     'social.pipeline.user.user_details',
-    'auth.pipeline.get_user_avatar',
+    #'auth.pipeline.get_user_avatar',
 
 )
 
@@ -210,12 +210,12 @@ SOCIAL_AUTH_DISCONNECT_PIPELINE = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '223307271163808'
 SOCIAL_AUTH_FACEBOOK_SECRET = '94cda17962cf0d13188880c3be3d82a0'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'ru_RU'}
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'friends']
+#SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'ru_RU'}
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('friends', '')]
 SOCIAL_AUTH_VK_OAUTH2_KEY = '3972093'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'dlrYrcLQrA1dUdF8nAlE'
-SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'friends']
 # SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = [('friends','friends.get')]
 
 

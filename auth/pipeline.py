@@ -16,7 +16,7 @@ def load_extra_data(strategy, details, response, uid, user, is_new=False, *args,
         uid
     )
     if social:
-        if is_new and strategy.backend.name == 'facebook':
-            url = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
+        #if is_new and strategy.backend.name == 'facebook':
+        url = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
         extra_data = strategy.backend.extra_data(user, uid, response, details, url)
         social.set_extra_data(extra_data)

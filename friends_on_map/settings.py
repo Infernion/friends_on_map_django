@@ -197,7 +197,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     # 'auth.pipeline.get_user_friends',
     'social.pipeline.user.user_details',
-    #'auth.pipeline.get_user_avatar',
+    'auth.pipeline.get_user_avatar',
 
 )
 

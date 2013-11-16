@@ -1,5 +1,5 @@
 from requests import request, HTTPError
-
+from django.core.files.base import ContentFile
 
 def save_picture(strategy, user, response, details,
                 is_new=False, *args, **kwargs):

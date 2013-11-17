@@ -187,8 +187,8 @@ SOCIAL_AUTH_PIPELINE = (
     # 'social.pipeline.mail.mail_validation',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
-    #'auth.pipeline.load_extra_data',
-    'social.pipeline.social_auth.load_extra_data',
+    'auth.pipeline.load_extra_data',
+    #'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
     'auth.pipeline.get_user_avatar',
 )

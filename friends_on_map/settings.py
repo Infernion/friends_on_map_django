@@ -217,7 +217,21 @@ GMAP_API_KEY = 'AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '91es7q)2)4l%fukw30pji=gj^ah#871r11+8v-j+0fev(5^z$^'
 
+os.environ['MEMCACHE_SERVERS'] = os.environ.get('MEMCACHIER_SERVERS', '').replace(',', ';')
+os.environ['MEMCACHE_USERNAME'] = os.environ.get('MEMCACHIER_USERNAME', '')
+os.environ['MEMCACHE_PASSWORD'] = os.environ.get('MEMCACHIER_PASSWORD', '')
 
+CACHES = {
+  'default': {
+    'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+    'TIMEOUT': 500,
+    'BINARY': True,
+    'OPTIONS': {
+        'tcp_nodelay': True,
+        'remove_failed': 4
+    }
+  }
+}
 try:
     from .local import *
 except ImportError:

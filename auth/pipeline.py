@@ -1,5 +1,7 @@
+from django.core.cache import cache
 import urllib
 import json
+
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(
@@ -19,19 +21,15 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 
     if photo_url:
         social.set_extra_data({'photo': photo_url, 'friends': friends})
-    #social.set_extra_data({'test1':'test'})
 
-'''
+
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
-    pass
-'''
-'''
-def load_extra_data(strategy, details, response, uid, user, *args, **kwargs):
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(
         strategy.backend.name,
         uid
     )
-    if social:
-        extra_data = strategy.backend.extra_data(user, uid, response, details)
-        social.set_extra_data(extra_data)
-'''
+    photo_url = None
+    #if strategy.backend.name == 'vk':
+    cache.set("foo", "bar")
+    print cache.get("foo")
+

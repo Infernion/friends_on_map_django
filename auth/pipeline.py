@@ -1,4 +1,5 @@
 import urllib
+import json
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(

@@ -16,3 +16,6 @@ def get_user_avatar(strategy, details, response, social_user, uid,\
     social.save()
     user.set_extra_data['test'] = 'test'
     user.save()
+    dfhd
+    drh
+    22fh

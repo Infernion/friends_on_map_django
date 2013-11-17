@@ -15,7 +15,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         #          '&access_token={0}'.format(response['access_token'])))
 
     if photo_url:
-        social.set_extra_data({'photo': photo_url)
+        social.set_extra_data({'photo': photo_url})
     #social.set_extra_data({'test1':'test'})
 
 '''

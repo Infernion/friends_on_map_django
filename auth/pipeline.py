@@ -1,3 +1,5 @@
+from social.pipeline.social_auth import load_extra_data
+
 def get_user_avatar(strategy, details, response, social_user, uid,\
                     user, *args, **kwargs):
     url = None

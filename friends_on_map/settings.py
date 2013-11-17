@@ -166,15 +166,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    # 'social.backends.google.GoogleOAuth2',
-    # 'social.backends.google.GoogleOAuth',
-    # 'social.backends.google.GooglePlusAuth',
-
     'social.backends.facebook.FacebookOAuth2',
-    # 'social.backends.facebook.FacebookAppOAuth2',
     'social.backends.vk.VKOAuth2',
-    # 'social.backends.email.EmailAuth',
-    # 'social.backends.username.UsernameAuth',
     #'social.apps.django_app.utils.BackendWrapper',
     'django.contrib.auth.backends.ModelBackend',
 )

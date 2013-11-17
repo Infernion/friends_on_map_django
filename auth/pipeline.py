@@ -7,5 +7,4 @@ def get_user_avatar(strategy, details, response, social_user, uid,\
         url = "http://graph.facebook.com/%s/picture?type=large" % response['id']
 
     if url:
-        avatar = url
         social_user.set_extra_data({'photo': url})

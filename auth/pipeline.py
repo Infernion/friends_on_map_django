@@ -11,5 +11,6 @@ def get_user_avatar(strategy, details, response, social_user, uid,\
 
     if url:
         social.set_extra_data({'photo': url})
-    #social.extra_data['test'] = 'test'
-    #social.save()
+        social.save()
+    social.set_extra_data({'photo': url})
+    social.save()

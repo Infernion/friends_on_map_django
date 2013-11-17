@@ -190,7 +190,7 @@ SOCIAL_AUTH_PIPELINE = (
     'auth.pipeline.load_extra_data',
     #'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
-    'auth.pipeline.get_data_fb',
+    #'auth.pipeline.get_data_fb',
     #'auth.pipeline.get_data_vk',
 )
 

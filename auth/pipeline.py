@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-import urllib
-import json
-
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(
@@ -31,5 +27,5 @@ def load_extra_data(strategy, details, response, uid, user, *args, **kwargs):
         uid
     )
     if social:
-        extra_data = strategy.backend.extra_data(user, uid, response, details, 'test')
+        extra_data = strategy.backend.extra_data(user, uid, response, details)
         social.set_extra_data(extra_data)

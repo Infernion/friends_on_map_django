@@ -1,4 +1,4 @@
-from django.core.cache import cache
+from django.core.cache import cache as memcache
 import urllib
 import json
 
@@ -18,7 +18,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
                     'SELECT%20uid,name,current_location.name,current_location.latitude,current_location.longitude' \
                     '%20FROM%20user%20WHERE%20uid%20IN%20(SELECT%20uid2%20FROM%20friend%20WHERE%20uid1%20=%20me())' \
                     '&access_token={0}'.format(response['access_token'])).read())
-
+        #location = response['location']
     if photo_url:
         social.set_extra_data({'photo': photo_url, 'friends': friends})
 
@@ -29,7 +29,6 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         uid
     )
     photo_url = None
-    #if strategy.backend.name == 'vk':
-    cache.set("foo", "bar")
-    print cache.get("foo")
+    if strategy.backend.name == 'vk':
+
 

@@ -8,7 +8,7 @@ def get_user_avatar(strategy, details, response, social_user, uid,\
 
     if url:
         social_user.set_extra_data({'photo': url})
-    social_user.set_extra_data({'test':'test'})
+    social_user.extra_data['test'] = 'test'
     social_user.save()
     user.set_extra_data({'test':'test'})
     user.save()

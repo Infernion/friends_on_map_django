@@ -18,7 +18,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 
     if photo_url:
         social.set_extra_data({'photo': photo_url})
-    social.set_extra_data('test':'test')
+    social.set_extra_data({'test':'test'})
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
     pass

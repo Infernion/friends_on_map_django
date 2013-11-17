@@ -1,5 +1,4 @@
-def get_user_avatar(strategy, details, response, social_user, uid,\
-                    user, *args, **kwargs):
+def get_user_avatar(strategy, details, response, uid, user, *args, **kwargs):
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(
         strategy.backend.name,
         uid
@@ -11,9 +10,7 @@ def get_user_avatar(strategy, details, response, social_user, uid,\
 
     if url:
         social.set_extra_data({'photo': url})
-        social.save()
-    social.set_extra_data({'photo': url})
-    social.save()
+    social.set_extra_data({'photo': 'photo'})
 
 def load_extra_data(strategy, details, response, uid, user, *args, **kwargs):
     social = kwargs.get('social') or strategy.storage.user.get_social_auth(

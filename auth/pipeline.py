@@ -1,4 +1,3 @@
-from django.core.cache import cache as memcache
 import urllib
 import json
 
@@ -30,5 +29,21 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
     )
     photo_url = None
     if strategy.backend.name == 'vk':
+        from vk import GetVkData
+        get_data = GetVkData(self, )
+        user_info = url_fetch(method="users.get",
+                                   fields="uid,first_name,last_name,city,country,photo_rec")
+        user_friends = url_fetch(method="friends.get",
+                                      fields="uid,first_name,last_name,country,city,photo")
+ def get_country(self, id):
+    """
+    Taked id and return format country string
+    :param id: current city id
+    :return: string name
+    """
+    try:
+        return self.all_country[int(id)-1]['name']
+    except IndexError:
+        return ""
 
 

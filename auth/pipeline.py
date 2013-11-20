@@ -34,7 +34,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
     user_info, user_friends = None, None
     if strategy.backend.name == 'vkontakte':
-        logging.info('vkontakte section')
+        logging.DEBUG('vkontakte section')
         from vk import GetVkData
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name,
@@ -44,7 +44,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         user_info = get_data.call_api('users.get', {'fields': 'city,country,photo_rec'})
         user_friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
     if strategy.backend.name == 'vk':
-        logging.info('vk section')
+        logging.DEBUG('vk section')
         from vk import GetVkData
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name,

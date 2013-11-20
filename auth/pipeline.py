@@ -33,6 +33,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
     user_info, user_friends = None, None
+    print 'section'
     if strategy.backend.name == 'vkontakte':
         print 'vkontakte section'
         from vk import GetVkData

@@ -29,6 +29,7 @@ class GetVkData(object):
         self.uid = uid
         self.token = token
         self.all_country = self.call_api('places.getCountryById', {'cids': ','.join(map(str, range(236)))})
+        logging.info(self.all_country)
 
     def get_country(self, id):
         '''

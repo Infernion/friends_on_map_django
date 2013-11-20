@@ -1,5 +1,14 @@
 import urllib
 import json
+import logging
+
+logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s',
+                    level=logging.DEBUG)
+#log.py[LINE:33]# DEBUG    [2012-05-25 00:11:58,466]  This is a debug message
+#log.py[LINE:34]# INFO     [2012-05-25 00:11:58,466]  This is an info message
+#log.py[LINE:35]# WARNING  [2012-05-25 00:11:58,466]  This is a warning
+#log.py[LINE:36]# ERROR    [2012-05-25 00:11:58,467]  This is an error message
+#log.py[LINE:37]# CRITICAL [2012-05-25 00:11:58,467]  FATAL!!!
 
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
@@ -30,7 +39,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
             uid
         )
         user_info, user_friends = None, None
-        get_data = GetVkData(self, response['id'], response['access_token']) # uid, token
+        get_data = GetVkData(response['id'], response['access_token']) # uid, token
         user_info = get_data.call_api('users.get',{'fields':'city,country,photo_rec')
         user_friends = get_data.call_api('friends.get', {'fields':'uid,first_name,last_name,country,city,photo')
     if user_info and user_friends:

@@ -42,9 +42,9 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         )
         get_data = GetVkData(response['uid'], response['access_token']) # uid, token
         user_info = get_data.call_api('users.get', {'fields': 'city,country,photo_rec'})
-        print 'user info '+user_info
+        print 'user_in '+user_info
         user_friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
-        print 'user fr '+user_friends
+        print 'user_fr '+user_friends
     if user_info and user_friends:
         social.set_extra_data({'user_data': user_info, 'friends': user_friends})
 

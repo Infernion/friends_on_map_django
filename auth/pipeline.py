@@ -34,18 +34,18 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
     user_info, user_friends = None, None
     if strategy.backend.name == 'vk-oauth2':
-        print 'vk section'
+        logging.info('vk section')
         from vk import GetVkData
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name,
             uid
         )
         get_data = GetVkData(response['uid'], response['access_token'])  # uid, token
-        print 'get_data '+get_data
+        logging.info('get_data', get_data)
         user_info = get_data.call_api('users.get', {'fields': 'city,country,photo_rec'})
-        print 'user_in '+user_info
+        logging.info('user_in ', user_info)
         user_friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
-        print 'user_fr '+user_friends
+        logging.info('user_fr', user_friends)
     if user_info and user_friends:
         social.set_extra_data({'user_data': user_info, 'friends': user_friends})
 

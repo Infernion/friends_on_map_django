@@ -24,7 +24,7 @@ class GetVkData(object):
     Returns:
     Auths user and redirects him to map page.
     '''
-    self.last_time = 0.0
+    last_time = 0.0
 
     def __init__(self, uid, token):
         self.uid = uid

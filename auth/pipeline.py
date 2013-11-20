@@ -32,13 +32,13 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
+    user_info, user_friends = None, None
     if strategy.backend.name == 'vk':
         from vk import GetVkData
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name,
             uid
         )
-        user_info, user_friends = None, None
         get_data = GetVkData(response['id'], response['access_token']) # uid, token
         user_info = get_data.call_api('users.get', {'fields': 'city,country,photo_rec'})
         user_friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})

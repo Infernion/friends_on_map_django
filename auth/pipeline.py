@@ -33,7 +33,11 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
     user_info, user_friends = None, None
-    logging.DEBUG('test')
+    logging.DEBUG('test DEBUG')
+    logging.info('test info')
+    logging.ERROR('test EROR')
+    logging.CRITICAL('test CRTICAL')
+    logging.warning('test warning')
     if strategy.backend.name == 'vkontakte':
         logging.DEBUG('vkontakte section')
         from vk import GetVkData

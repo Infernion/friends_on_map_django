@@ -24,7 +24,7 @@ class GetVkData(object):
     Returns:
     Auths user and redirects him to map page.
     '''
-    last_time = 0.0
+    self.last_time = 0.0
 
     def __init__(self, uid, token):
         self.uid = uid
@@ -67,7 +67,7 @@ class GetVkData(object):
         :param fields: what fields we will get
         :return: dict
         '''
-        time.sleep(max(0.0, 0.3333 - (time.clock() - last_time)))
+        time.sleep(max(0.0, 0.3333 - (time.clock() - self.last_time)))
 
         if isinstance(params, list):
             params_list = params[:]
@@ -80,7 +80,7 @@ class GetVkData(object):
         url = 'https://api.vk.com/method/%s?%s' % (method, urlencode(params_list))
 
         response = urllib2.urlopen(url).read()
-        last_time = time.clock()
+        self.last_time = time.clock()
 
         if method == 'friends.get' or method == 'places.getCountryById':
             try:

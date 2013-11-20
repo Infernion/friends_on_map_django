@@ -15,6 +15,7 @@ logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(a
 #log.py[LINE:36]# ERROR    [2012-05-25 00:11:58,467]  This is an error message
 #log.py[LINE:37]# CRITICAL [2012-05-25 00:11:58,467]  FATAL!!!
 
+
 class GetVkData(object):
     '''
     Args:

@@ -11,21 +11,17 @@ logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(a
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     photo_url, friends = None, None
-    logging.info('user_id', response['id'])
-    logging.info('user_uid', uid)
-    logging.info('user_access', response['access_token'])
-    print 'user_access', response['access_token']
     if strategy.backend.name == 'facebook':
         from urllib import quote
         from facebook import GetFacebookData
 
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
-        #logging.debug('user_id', response['id'])
-        #logging.debug('user_uid', uid)
-        #logging.debug('user_access', response['access_token'])
+            print 'user_id', response['id']
+        print 'user_uid', uid
+        print 'user_access', response['access_token']
         get_data = GetFacebookData(response['id'], response['access_token'])
-        logging.info('get_data', get_data)
+        print 'get_data', get_data
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
         logging.info('photo', photo_url)
         # FQL for friends is:
@@ -33,7 +29,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         #         FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())
         friends = get_data.call_api('fql', {
         'q': quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())')}, ',')
-        logging.info('user_fr', friends)
+        print 'user_fr', friends
     if photo_url and friends:
         social.set_extra_data({'photo': photo_url, 'friends': friends})
 

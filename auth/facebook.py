@@ -16,7 +16,6 @@ class GetFacebookData(object):
     def __init__(self, uid, token):
         self.uid = uid
         self.token = token
-        print 'token_uid', token, uid
 
     def call_api(self, method, params):
         '''
@@ -26,6 +25,8 @@ class GetFacebookData(object):
         :param fields: what fields we will get
         :return: dict
         '''
+        print 'method', method
+        print 'params', params
         time.sleep(max(0.0, 0.3333 - (time.clock() - self.last_time)))
 
         if isinstance(params, list):
@@ -36,6 +37,7 @@ class GetFacebookData(object):
             params_list = [params]
 
         params_list += [('access_token', self.token)]
+        print 'p_list', params_list
         url = 'https://graph.facebook.com/%s?%s' % (method, urlencode(params_list))
         print 'facebook_url', url
 

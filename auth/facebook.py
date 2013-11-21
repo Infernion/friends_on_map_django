@@ -14,8 +14,8 @@ class GetFacebookData(object):
     '''
     last_time = 0.0
 
-    def __init__(self, token):
-        #self.uid = uid
+    def __init__(self, uid, token):
+        self.uid = uid
         self.token = token
 
     def call_api(self, method, params):

@@ -17,9 +17,9 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
 
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
-        logging.info('user_id', response['id'])
-        logging.info('user_uid', uid)
-        logging.info('user_access', response['access_token'])
+        logging.debug('user_id', response['id'])
+        logging.debug('user_uid', uid)
+        logging.debug('user_access', response['access_token'])
         get_data = GetFacebookData(response['id'], response['access_token'])
         logging.info('get_data', get_data)
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']

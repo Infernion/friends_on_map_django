@@ -43,7 +43,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         #logging.info('user_in ', user_info)
         friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
         logging.info('user_fr', friends)
-    if photo_url and user_friends:
+    if photo_url and friends:
         social.set_extra_data({'photo': photo_url, 'friends': friends})
 
 

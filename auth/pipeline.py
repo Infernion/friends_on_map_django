@@ -11,6 +11,7 @@ logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(a
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     photo_url, friends = None, None
+    logging.info('data_fb_in')
     if strategy.backend.name == 'facebook':
         from urllib import quote
         from facebook import GetFacebookData

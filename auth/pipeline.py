@@ -25,7 +25,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         #         SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude
         #         FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())
         friends = get_data.call_api('fql', {
-        'q': quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())')})
+        'q': quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())')}, ',')
 
         #friends = json.loads(urllib.urlopen(r'https://graph.facebook.com/fql?q=' \
         #                                    'SELECT%20uid,name,current_location.name,current_location.latitude,current_location.longitude' \

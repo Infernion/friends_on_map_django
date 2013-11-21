@@ -14,6 +14,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     logging.info('user_id', response['id'])
     logging.info('user_uid', uid)
     logging.info('user_access', response['access_token'])
+    print 'user_access', response['access_token']
     if strategy.backend.name == 'facebook':
         from urllib import quote
         from facebook import GetFacebookData

@@ -20,8 +20,9 @@ class GetFacebookData(object):
     def call_api(self, method, params):
         '''
         This method formed QUERY with accepted parameter to VK API
+        :param cids: for show country/city with id
         :param method: what query we do
-        :param params: what fields we will get
+        :param fields: what fields we will get
         :return: dict
         '''
         time.sleep(max(0.0, 0.3333 - (time.clock() - self.last_time)))
@@ -34,7 +35,9 @@ class GetFacebookData(object):
             params_list = [params]
 
         params_list += [('access_token', self.token)]
+        print 'p_list', params_list
         url = 'https://graph.facebook.com/%s?%s' % (method, unquote_plus(urlencode(params_list)))
+        print 'facebook_url', url
 
         response = urllib2.urlopen(url).read()
         self.last_time = time.clock()

@@ -23,7 +23,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         get_data = GetFacebookData(response['id'], response['access_token'])
         print 'get_data', get_data
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
-        logging.info('photo', photo_url)
+        print 'photo', photo_url
         # FQL for friends is:
         #         SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude
         #         FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())

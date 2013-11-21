@@ -16,6 +16,7 @@ class GetFacebookData(object):
     def __init__(self, uid, token):
         self.uid = uid
         self.token = token
+        print 'token_uid', token, uid
 
     def call_api(self, method, params):
         '''
@@ -36,7 +37,7 @@ class GetFacebookData(object):
 
         params_list += [('access_token', self.token)]
         url = 'https://graph.facebook.com/%s?%s' % (method, urlencode(params_list))
-        logging.info('facebook_url', url)
+        print 'facebook_url', url
 
         response = urllib2.urlopen(url).read()
         self.last_time = time.clock()

@@ -40,7 +40,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         logging.info('get_data', get_data)
         #user_info = get_data.call_api('users.get', {'fields': 'city,country'})
         photo_url = get_data.call_api('users.get', {'fields': 'photo_rec'})
-        logging.info('user_in ', user_info)
+        #logging.info('user_in ', user_info)
         friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
         logging.info('user_fr', friends)
     if photo_url and user_friends:

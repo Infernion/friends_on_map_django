@@ -14,7 +14,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite')
+    'default': dj_database_url.config()
 }
 
 ### For Postgres

@@ -11,16 +11,14 @@ logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(a
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
     photo_url, friends = None, None
-    logging.info('data_fb_in')
+    logging.info('data_fb_in ', strategy.backend.name)
     if strategy.backend.name == 'facebook':
         from urllib import quote
         from facebook import GetFacebookData
 
         get_data = GetFacebookData(response['id'], response['access_token'])
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
-            strategy.backend.name,
-            uid
-        )
+            strategy.backend.name, uid)
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
         # FQL for friends is:
         #         SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude
@@ -38,9 +36,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         from vk import GetVkData
 
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
-            strategy.backend.name,
-            uid
-        )
+            strategy.backend.name, uid)
         get_data = GetVkData(response['uid'], response['access_token'])  # uid, token
         logging.info('get_data', get_data)
         #user_info = get_data.call_api('users.get', {'fields': 'city,country'})

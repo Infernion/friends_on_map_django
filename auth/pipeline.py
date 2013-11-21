@@ -27,7 +27,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
                    'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())', ',')
         friends = get_data.call_api('fql', {'q': query})
         print 'user_fr', friends
-    if photo_url end friends:
+    if photo_url and friends:
         social.set_extra_data({'photo': photo_url, 'friends': friends})
 
 

@@ -6,11 +6,13 @@ import logging
 
 from django.core.cache import cache as memcache
 
+
 class GetFacebookData(object):
     '''
     get: user id and token
     '''
     last_time = 0.0
+
     def __init__(self, uid, token):
         self.uid = uid
         self.token = token

@@ -18,7 +18,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
         logging.info('user_id', response['id'])
-        logging.info('user_uid', response['uid'])
+        logging.info('user_uid', uid)
         logging.info('user_access', response['access_token'])
         get_data = GetFacebookData(response['id'], response['access_token'])
         logging.info('get_data', get_data)

@@ -2,7 +2,8 @@ from urllib import urlencode
 import urllib2
 import json
 import time
-from urllib import unquote_plus
+import logging
+from urllib import quote, unquote_plus
 
 #from django.core.cache import cache as memcache
 
@@ -43,3 +44,10 @@ class GetFacebookData(object):
         self.last_time = time.clock()
 
         return (json.loads(response))['data']  # If use get method return all item in value
+
+
+#query = quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude '
+#                   'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())', ',')
+#print 'query', query
+#get_data = GetFacebookData('CAADLGMaSz6ABAGt6WPm3u9Mae6U8ufCu20xZC5dgTvYR8T2BhtBFw3mK9sPt6noZBIodrFwvwIuRVy9eM4s7ZApf736dFx6VGNEm8Nb6PKXibZBsVKEtaK5ssZBrlZC1EThR2coqScmGMgnhQwwjmLRd2NVjnGH16yNT8NzjB9FcB7ZB5ZB6OdEx6FU52DN9f1AZD')
+#print get_data.call_api('fql', {'q': query})

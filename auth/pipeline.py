@@ -23,7 +23,8 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         #         SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude
         #         FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())
         friends = get_data.call_api('fql', {
-        'q': quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())')}, ',')
+        'q': quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude '
+                   'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())', ',')})
         print 'user_fr', friends
     if photo_url and friends:
         social.set_extra_data({'photo': photo_url, 'friends': friends})

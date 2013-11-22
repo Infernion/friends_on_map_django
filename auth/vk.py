@@ -50,15 +50,18 @@ class GetVkData(object):
         '''
         # print 'ID', id
         city = memcache.get('cid: %s' % id)
+        logging.warning(city)
         #city = None
         if city is not None:
             return city
         else:
             try:
                 get_city = (self.call_api('places.getCityById', {'cids': id['name']}))
+                logging.warning(get_city)
             except:
                 return ''
             city = memcache.set('cid: %s' % id, get_city)
+            logging.warning(city)
             return get_city
 
     def call_api(self, method, params):
@@ -132,10 +135,10 @@ class GetVkData(object):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
         address = '%s, %s' % (city, country)
-        logging.warning(city)
-        logging.warning(country)
-        logging.warning(address)
-        location = Geocode().get(address)
+        #logging.warning(city)
+        #logging.warning(country)
+        #logging.warning(address)
+        #location = Geocode().get(address)
         return address, location
 
     def format(self, field, first_name, last_name):

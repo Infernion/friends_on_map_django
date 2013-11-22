@@ -19,15 +19,18 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
             strategy.backend.name, uid)
         get_data = GetFacebookData(response['id'], response['access_token'])
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
-        user_info = get_data.call_api('fql', {'q': quote('SELECT uid,name,current_location.name, current_location.latitude, '
-                                                   'current_location.longitude, pic_big, profile_url, friend_count '
-                                                   'FROM user WHERE uid=me()'), ',')})
+        user_info = get_data.call_api('fql',
+                                      {'q': quote('SELECT uid,name,current_location.name, current_location.latitude, '
+                                                  'current_location.longitude, pic_big, profile_url, friend_count '
+                                                  'FROM user WHERE uid=me()'), ',')})
 
-        friends = get_data.call_api('fql', {'q': quote('SELECT uid, name,current_location.name, current_location.latitude, '
-                                                       'current_location.longitude, pic_square, profile_url '
-                                                       'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())', ',')})
-    if photo_url and friends:
-        social.set_extra_data({'friends': friends, 'user_info': user_info})
+        friends = get_data.call_api('fql',
+                                    {'q': quote('SELECT uid, name,current_location.name, current_location.latitude, '
+                                                'current_location.longitude, pic_square, profile_url '
+                                                'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())',
+                                                ',')})
+        if photo_url and friends:
+            social.set_extra_data({'friends': friends, 'user_info': user_info})
 
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
@@ -44,9 +47,9 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo_max'})
         friends_formated = {'name': self.format(user_info, 'first_name', 'last_name'),
                             'current_location': {
-                            'name': self.format_address(user_info, 'city', 'country')[0],
-                            'latitude': self.format_address(user_info, 'city', 'country')[1][0],
-                            'longitude': self.format_address(user_info, 'city', 'country')[1][1]},
+                                'name': self.format_address(user_info, 'city', 'country')[0],
+                                'latitude': self.format_address(user_info, 'city', 'country')[1][0],
+                                'longitude': self.format_address(user_info, 'city', 'country')[1][1]},
                             'uid': user_info['uid'], 'pic_big': user_info['photo_max']}
     if user_info_formated and friends_formated:
         social.set_extra_data({'user_info': user_info_formated, 'friends': friends_formated})

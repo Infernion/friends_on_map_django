@@ -83,7 +83,7 @@ class GetVkData(object):
 
         response = urllib2.urlopen(url).read()
         self.last_time = time.clock()
-        print (json.loads(response))
+        #print (json.loads(response))
         if method == 'friends.get' or method == 'places.getCountryById':
             try:
                 return (json.loads(response))['response']  # If use get method return all item in value

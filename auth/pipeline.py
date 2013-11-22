@@ -40,9 +40,9 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
         get_data = GetVkData(response['uid'], response['access_token'])
-        friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
+        #friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
         #print 'friends', friends
-        friends_formated = get_data.get_friends_from_json(friends)
+        #friends_formated = get_data.get_friends_from_json(friends)
         #print 'friends_formated', friends_formated
         user_info = get_data.call_api('users.get', {'fields': 'uid,first_name,last_name,country,city,photo_max_orig'})
         #print 'user_info', user_info

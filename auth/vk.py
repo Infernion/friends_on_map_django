@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from urllib import urlencode, quote
+from urllib import urlencode
 import urllib2
 import json
 import time
@@ -53,7 +53,7 @@ class GetVkData(object):
         # print 'ID', id
         city = memcache.get('cid: %s' % id)
         #logging.warning(id)
-        logging.warning(city)
+        #logging.warning(city)
         #city = None
         if city is not None:
             return city
@@ -107,7 +107,7 @@ class GetVkData(object):
         :return: list of friends form: ['First_name Last_name', 'City, Country', city=bool, country=bool]
         '''
         friends = []
-        logging.warning(user_friends)
+        #logging.warning(user_friends)
         for field in user_friends:
             if 'country' in field:
                 if 'city' in field:
@@ -141,11 +141,11 @@ class GetVkData(object):
     def format_address(self, field, city_id, country_id):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
-        address = quote('%s, %s' % (city.encode(encoding='utf-8'), country.encode(encoding='utf-8')))
+        address = '%s, %s' % (city.encode(encoding='utf-8'), country.encode(encoding='utf-8'))
         #logging.warning(field[city_id])
         #logging.warning(city)
         #logging.warning(country)
-        logging.warning(address)
+        #logging.warning(address)
         location = Geocode().get(address)
         return address, location
 

@@ -46,14 +46,14 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         #friends_formated = get_data.get_friends_from_json(friends)
         #print 'friends_formated', friends_formated
         user_info = get_data.call_api('users.get', {'fields': 'uid,first_name,last_name,country,city,photo_max_orig'})
-        #print 'user_info', user_info
+        logging.warning(user_info)
         user_info_formated = {'name': get_data.format(user_info, 'first_name', 'last_name'),
                              'current_location': {
                                 'name': get_data.format_address(user_info, 'city', 'country')[0],
                                 'latitude': get_data.format_address(user_info, 'city', 'country')[1][0],
                                 'longitude': get_data.format_address(user_info, 'city', 'country')[1][1]},
                             'uid': user_info['uid'], 'pic_big': user_info['photo_max_orig']}
-        #print 'user_info_formated', user_info_formated
+        logging.warning(user_info_formated)
     if user_info_formated and friends_formated:
         social.set_extra_data({'user_info': user_info_formated, 'friends': friends_formated})
 

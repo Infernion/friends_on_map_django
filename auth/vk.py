@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from urllib import urlencode
+from urllib import urlencode, quote
 import urllib2
 import json
 import time
@@ -141,7 +141,7 @@ class GetVkData(object):
     def format_address(self, field, city_id, country_id):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
-        address = '%s, %s' % (smart_unicode(city), smart_unicode(country))
+        address = quote('%s, %s' % (city.encode(encoding='utf-8'), country.encode(encoding='utf-8')))
         #logging.warning(field[city_id])
         #logging.warning(city)
         #logging.warning(country)

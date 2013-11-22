@@ -51,20 +51,18 @@ class GetVkData(object):
         # print 'ID', id
         city = memcache.get('cid: %s' % id)
         #logging.warning(id)
-        #logging.warning(city)
+        logging.warning(city)
         #city = None
         if city is not None:
             return city
         else:
-            logging.warning('else_block')
             #try:
             get_city = (self.call_api('places.getCityById', {'cids': id}))
-            logging.warning(get_city)
+            #logging.warning(get_city)
             #except IndexError:
             #    return ''
-            city = memcache.set('cid: %s' % id, get_city)
-            logging.warning('after_try')
-            logging.warning(city)
+            memcache.set('cid: %s' % id, get_city)
+            #logging.warning('after_try')
             return get_city
 
     def call_api(self, method, params):

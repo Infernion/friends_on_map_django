@@ -29,7 +29,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
                                                 'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())',
                                                 ',')})
         if user_info and friends:
-            social.set_extra_data({'friends': friends, 'user_info': user_info})
+            social.set_extra_data({'friends': friends, 'user_info': user_info[0]})
 
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
@@ -51,7 +51,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
                                 'longitude': self.format_address(user_info, 'city', 'country')[1][1]},
                             'uid': user_info['uid'], 'pic_big': user_info['photo_max']}
     if user_info_formated and friends_formated:
-        social.set_extra_data({'user_info': user_info_formated, 'friends': friends_formated})
+        social.set_extra_data({'user_info': user_info_formated[0], 'friends': friends_formated})
 
 
 

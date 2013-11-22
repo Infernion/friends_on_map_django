@@ -138,13 +138,14 @@ class GetVkData(object):
         #logging.warning(city)
         #logging.warning(country)
         #logging.warning(address)
-        #location = Geocode().get(address)
+        location = Geocode().get(address)
         return address, location
 
     def format(self, field, first_name, last_name):
         return '%s %s' % (field[first_name], field[last_name])
 
-#get_data = GetVkData('15826446', '1b23f473a03c478b3c430f8f60a067624c2804725446f38440cd41e251ceac574d6828e76c9ea1c1f431d')
+#get_data = GetVkData('15826446', '1b23f473a03c478b3c430f8f60a067624c2804725446f38440cd41e251c
+# eac574d6828e76c9ea1c1f431d')
 #friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
 #print friends
 #print 'user_info', user_info

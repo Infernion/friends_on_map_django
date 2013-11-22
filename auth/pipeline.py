@@ -41,10 +41,6 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
         get_data = GetVkData(response['uid'], response['access_token'])
-        friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
-        #print 'friends', friends
-        friends_formated = get_data.get_friends_from_json(friends)
-        #print 'friends_formated', friends_formated
         user_info = get_data.call_api('users.get', {'fields': 'uid,first_name,last_name,country,city,photo_max_orig'})
         logging.warning(user_info)
         user_info_formated = {'name': get_data.format(user_info, 'first_name', 'last_name'),
@@ -54,6 +50,11 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
                                 'longitude': get_data.format_address(user_info, 'city', 'country')[1][1]},
                             'uid': user_info['uid'], 'pic_big': user_info['photo_max_orig']}
         logging.warning(user_info_formated)
+        friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
+        logging.warning(friends)
+        friends_formated = get_data.get_friends_from_json(friends)
+        logging.warning(friends_formated)
+
     if user_info_formated or friends_formated:
         social.set_extra_data({'user_info': user_info_formated, 'friends': friends_formated})
 

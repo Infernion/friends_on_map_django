@@ -54,7 +54,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
                                 'longitude': get_data.format_address(user_info, 'city', 'country')[1][1]},
                             'uid': user_info['uid'], 'pic_big': user_info['photo_max_orig']}
         logging.warning(user_info_formated)
-    if user_info_formated and friends_formated:
+    if user_info_formated or friends_formated:
         social.set_extra_data({'user_info': user_info_formated, 'friends': friends_formated})
 
 

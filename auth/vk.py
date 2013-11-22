@@ -57,11 +57,11 @@ class GetVkData(object):
         else:
             try:
                 get_city = (self.call_api('places.getCityById', {'cids': id['name']}))
-                logging.warning(get_city)
+                #logging.warning(get_city)
             except:
                 return ''
             city = memcache.set('cid: %s' % id, get_city)
-            logging.warning(city)
+            #logging.warning(city)
             return get_city
 
     def call_api(self, method, params):

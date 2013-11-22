@@ -108,25 +108,33 @@ class GetVkData(object):
         '''
         friends = []
         for field in user_friends:
+            data = memcache.get('f_data: %s' % field['uid'])
+            if data not None:
+                friends.append(data)
             if 'country' in field:
                 if 'city' in field:
                     # Friends with city and country
                     #logging.warning('city_in_field')
-                    logging.warning(field)
-                    friends.append({'name': self.format(field, 'first_name', 'last_name'),
+
+                    #logging.warning(field)
+                    data = {'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, 'city', 'country')[0],
                                         'latitude': self.format_address(field, 'city', 'country')[1][0],
                                         'longitude': self.format_address(field, 'city', 'country')[1][1]},
-                                    'uid': field['uid'], 'pic_square': field['photo']})
+                                    'uid': field['uid'], 'pic_square': field['photo']}
+                    memcache.set('f_data: %s' % field['uid'], data)
+                    friends.append(data)
                 elif 'city' not in field:
                     #logging.warning('city_not_in_field')
-                    friends.append({'name': self.format(field, 'first_name', 'last_name'),
+                    data = {'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, '', 'country')[0],
                                         'latitude': self.format_address(field, '', 'country')[1][0],
                                         'longitude': self.format_address(field, '', 'country')[1][1]},
-                                    'uid': field['uid'], 'photo': field['photo']})
+                                    'uid': field['uid'], 'photo': field['photo']}
+                    friends.append(data)
+                    memcache.set('f_data: %s' % field['uid'], data)
             else:
             # Who haven't home
                 friends.append({'name': (self.format(field, 'first_name', 'last_name')),
@@ -156,7 +164,7 @@ class GetVkData(object):
     def format(self, field, first_name, last_name):
         return '%s %s' % (field[first_name], field[last_name])
 
-get_data = GetVkData('15826446', '1b23f473a03c478b3c430f8f60a067624c2804725446f38440cd41e251ceac574d6828e76c9ea1c1f431d')
+#get_data = GetVkData('15826446', '1b23f473a03c478b3c430f8f60a067624c2804725446f38440cd41e251ceac574d6828e76c9ea1c1f431d')
 #friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
 #print friends
 #print 'user_info', user_info

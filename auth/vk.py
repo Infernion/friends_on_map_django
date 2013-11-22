@@ -31,7 +31,7 @@ class GetVkData(object):
         self.uid = uid
         self.token = token
         self.all_country = self.call_api('places.getCountryById', {'cids': ','.join(map(str, range(236)))})
-        logging.info(self.all_country)
+        #logging.info(self.all_country)
 
     def get_country(self, id):
         '''
@@ -50,7 +50,7 @@ class GetVkData(object):
         '''
         # print 'ID', id
         city = memcache.get('cid: %s' % id)
-        logging.warning(city)
+        #logging.warning(city)
         #city = None
         if city is not None:
             return city
@@ -108,6 +108,7 @@ class GetVkData(object):
             if 'country' in field:
                 if 'city' in field:
                     # Friends with city and country
+                    logging.warning('city_in_field')
                     friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, 'city', 'country')[0],
@@ -115,6 +116,7 @@ class GetVkData(object):
                                         'longitude': self.format_address(field, 'city', 'country')[1][1]},
                                     'uid': field['uid'], 'pic_square': field['photo']})
                 elif 'city' not in field:
+                    logging.warning('city_not_in_field')
                     friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, '', 'country')[0],
@@ -135,7 +137,7 @@ class GetVkData(object):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
         address = '%s, %s' % (city, country)
-        #logging.warning(city)
+        logging.warning('format_adress', city)
         #logging.warning(country)
         #logging.warning(address)
         location = Geocode().get(address)

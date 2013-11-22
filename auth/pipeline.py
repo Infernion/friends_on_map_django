@@ -54,7 +54,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
                             'uid': user_info['uid'], 'pic_big': user_info['photo_max']}
         #print 'user_info_formated', user_info_formated
     if user_info_formated and friends_formated:
-        social.set_extra_data({'user_info': user_info_formated[0], 'friends': friends_formated})
+        social.set_extra_data({'user_info': user_info_formated, 'friends': friends_formated})
 
 
 

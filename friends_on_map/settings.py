@@ -46,7 +46,7 @@ TIME_ZONE = 'Europe/Kiev'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('ru', 'Russian'),
     ('en', 'English'),
@@ -176,7 +176,6 @@ LOGIN_URL = '/login/'
 URL_PATH = ''
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
-# SOCIAL_AUTH_STORAGE = 'auth.models.DjangoStorage'
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',

@@ -137,7 +137,7 @@ class GetVkData(object):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
         address = '%s, %s' % (city, country)
-        logging.warning('format_adress', city)
+        logging.warning(city)
         #logging.warning(country)
         #logging.warning(address)
         location = Geocode().get(address)

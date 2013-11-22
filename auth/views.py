@@ -21,7 +21,7 @@ def done(request):
     user_model = None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
-    except DoesNotExist:
+    except:
         pass
     return render_to_response('done.html', {
         'user_model': user_model,

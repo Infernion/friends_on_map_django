@@ -22,11 +22,11 @@ class Geocode(object):
             geodata = {u'status': u'', u'results': []}
             while not geodata['results']:
                 geodata_json = urllib.urlopen(
-                            url="https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" % format_address,
-                            ).read()
+                            url="https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" %
+                                format_address).read()
                 geodata = json.loads(geodata_json)
                 time.sleep(1)
-            #print geodata
+            print geodata
             try:
                 geodata = geodata['results'][0]['geometry']['viewport']['northeast']
                 coords = [geodata['lat'], geodata['lng']]

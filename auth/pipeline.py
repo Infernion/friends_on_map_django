@@ -41,7 +41,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
             strategy.backend.name, uid)
         get_data = GetVkData(response['uid'], response['access_token'])
         friends = get_data.call_api('users.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
-        friends_formated = get_data.get_friends_from_json(user_info)
+        friends_formated = get_data.get_friends_from_json(friends)
 
         user_info = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo_max'})
         user_info_formated = {'name': self.format(user_info, 'first_name', 'last_name'),

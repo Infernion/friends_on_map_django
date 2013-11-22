@@ -5,7 +5,7 @@ import time
 import logging
 from geocode import Geocode
 
-from django.core.cache import cache as memcache
+#from django.core.cache import cache as memcache
 
 
 logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s',
@@ -49,7 +49,8 @@ class GetVkData(object):
         Take id and return format city string
         '''
         # print 'ID', id
-        city = memcache.get('cid: %s' % id)
+        #city = memcache.get('cid: %s' % id)
+        city = None
         if city is not None:
             return city
         else:
@@ -57,7 +58,7 @@ class GetVkData(object):
                 get_city = (self.call_api('places.getCityById', {'cids': id['name']}))
             except:
                 return ''
-            city = memcache.set('cid: %s' % id, get_city)
+            #city = memcache.set('cid: %s' % id, get_city)
             return get_city
 
     def call_api(self, method, params):
@@ -82,7 +83,7 @@ class GetVkData(object):
 
         response = urllib2.urlopen(url).read()
         self.last_time = time.clock()
-
+        print (json.loads(response))
         if method == 'friends.get' or method == 'places.getCountryById':
             try:
                 return (json.loads(response))['response']  # If use get method return all item in value
@@ -136,3 +137,15 @@ class GetVkData(object):
 
     def format(self, field, first_name, last_name):
         return '%s %s' % (field[first_name], field[last_name])
+
+#get_data = GetVkData('15826446', '1b23f473a03c478b3c430f8f60a067624c2804725446f38440cd41e251ceac574d6828e76c9ea1c1f431d')
+#friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
+#print friends
+#print 'user_info', user_info
+#user_info_formated = {'name': get_data.format(user_info, 'first_name', 'last_name'),
+#                             'current_location': {
+#                                'name': get_data.format_address(user_info, 'city', 'country')[0],
+#                                'latitude': get_data.format_address(user_info, 'city', 'country')[1][0],
+#                                'longitude': get_data.format_address(user_info, 'city', 'country')[1][1]},
+#                            'uid': user_info['uid'], 'pic_big': user_info['photo_max']}
+#print  user_info_formated

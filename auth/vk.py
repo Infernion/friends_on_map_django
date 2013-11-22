@@ -3,7 +3,7 @@ import urllib2
 import json
 import time
 import logging
-import geocode
+from geocode import Geocode
 
 from django.core.cache import cache as memcache
 

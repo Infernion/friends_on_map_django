@@ -30,7 +30,7 @@ class Geocode(object):
             try:
                 geodata = geodata['results'][0]['geometry']['viewport']['northeast']
                 coords = [geodata['lat'], geodata['lng']]
-                memcache.set('%s' % format_address, coords) # add new location to memcache
+                memcache.set('%s' % format_address, coords)  # add new location to memcache
                 return coords
             except IndexError:
                 return [-82.471829, -118.857425]

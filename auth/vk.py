@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from urllib import urlencode
 import urllib2
 import json
@@ -105,7 +106,7 @@ class GetVkData(object):
         :return: list of friends form: ['First_name Last_name', 'City, Country', city=bool, country=bool]
         '''
         friends = []
-        #logging.warning(user_friends)
+        logging.warning(user_friends)
         for field in user_friends:
             if 'country' in field:
                 if 'city' in field:

@@ -19,8 +19,10 @@ def login(request):
 def done(request):
     """Login complete view, displays user data"""
     user_model = None
-    if DjangoStorage.user.objects.get(user=request.user):
+    try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
+    except DoesNotExist:
+        pass
     return render_to_response('done.html', {
         'user_model': user_model,
         'user': request.user,

@@ -108,7 +108,7 @@ class GetVkData(object):
             if 'country' in field:
                 if 'city' in field:
                     # Friends with city and country
-                    logging.warning('city_in_field')
+                    #logging.warning('city_in_field')
                     friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, 'city', 'country')[0],
@@ -116,7 +116,7 @@ class GetVkData(object):
                                         'longitude': self.format_address(field, 'city', 'country')[1][1]},
                                     'uid': field['uid'], 'pic_square': field['photo']})
                 elif 'city' not in field:
-                    logging.warning('city_not_in_field')
+                    #logging.warning('city_not_in_field')
                     friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, '', 'country')[0],
@@ -127,9 +127,9 @@ class GetVkData(object):
             # Who haven't home
                 friends.append({'name': (self.format(field, 'first_name', 'last_name')),
                                 'current_location': {
-                                        'name': 'Antarctica',
-                                        'latitude': '-82.471829',
-                                        'longitude': '-118.857425'},
+                                    'name': 'Antarctica',
+                                    'latitude': '-82.471829',
+                                    'longitude': '-118.857425'},
                                 'uid': field['uid'], 'photo': field['photo']})
         return friends
 
@@ -137,6 +137,7 @@ class GetVkData(object):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
         address = '%s, %s' % (city, country)
+        logging.warning(city_id)
         logging.warning(city)
         #logging.warning(country)
         #logging.warning(address)

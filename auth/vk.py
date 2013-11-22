@@ -6,6 +6,7 @@ import time
 import logging
 from geocode import Geocode
 
+from django.utils.encoding import smart_str, smart_unicode
 from django.core.cache import cache as memcache
 
 
@@ -140,11 +141,11 @@ class GetVkData(object):
     def format_address(self, field, city_id, country_id):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
-        address = '%s, %s' % (city.encode(encoding='utf-8'), country.encode(encoding='utf-8'))
+        address = '%s, %s' % (smart_str(city), smart_str(country))
         #logging.warning(field[city_id])
         #logging.warning(city)
         #logging.warning(country)
-        #logging.warning(address)
+        logging.warning(address)
         location = Geocode().get(address)
         return address, location
 

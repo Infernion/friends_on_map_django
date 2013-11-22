@@ -93,7 +93,7 @@ class GetVkData(object):
         if method == 'friends.get' or method == 'places.getCountryById':
             try:
                 return (json.loads(response))['response']  # If use get method return all item in value
-            except IndexError:
+            except IndexError or KeyError:
                 return ''
         try:
             return (json.loads(response))['response'][0]   # Else set first

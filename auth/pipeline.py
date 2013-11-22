@@ -44,7 +44,7 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
         #print 'friends', friends
         friends_formated = get_data.get_friends_from_json(friends)
         #print 'friends_formated', friends_formated
-        user_info = get_data.call_api('users.get', {'fields': 'uid,first_name,last_name,country,city,photo_max'})
+        user_info = get_data.call_api('users.get', {'fields': 'uid,first_name,last_name,country,city,photo_max_orig'})
         #print 'user_info', user_info
         user_info_formated = {'name': get_data.format(user_info, 'first_name', 'last_name'),
                              'current_location': {

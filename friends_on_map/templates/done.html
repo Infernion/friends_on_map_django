@@ -5,7 +5,7 @@
 <p>You are logged in as {{ user.username }}!</p>
 <img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
 <p>Name: {{ user_model.extra_data.user_info.name }}</p>
-<p>You are from: {{ user_model.extra_data.user_data.current_location.name }} </p>
+<p>You are from: {{ user_model.extra_data.user_info.current_location.name }} </p>
  {% if backends.associated %}
 <p>Associated:</p>
 <ul>

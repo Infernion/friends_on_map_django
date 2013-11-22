@@ -119,16 +119,14 @@ class GetVkData(object):
                                     'current_location': {
                                         'name': format_address(field, 'city', 'country')[0],
                                         'latitude': format_address(field, 'city', 'country')[1][0],
-                                        'longitude': format_address(field, 'city', 'country')[1][1],
-                                    }
+                                        'longitude': format_address(field, 'city', 'country')[1][1]}
                                     'uid': field['uid'], 'pic_square': field['photo']})
                 elif 'city' not in field:
                     friends.append({'name': (format(field, 'first_name', 'last_name')),
                                     'current_location': {
                                         'name': format_address(field, '', 'country')[0],
                                         'latitude': format_address(field, '', 'country')[1][0],
-                                        'longitude': format_address(field, '', 'country')[1][1],
-                                    }
+                                        'longitude': format_address(field, '', 'country')[1][1]}
                                     'uid': field['uid'], 'photo': field['photo']})
             else:
             # Who haven't home

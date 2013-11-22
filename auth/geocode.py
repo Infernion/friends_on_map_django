@@ -4,8 +4,6 @@ from django.core.cache import cache as memcache
 import urllib
 import json
 import time
-import model
-
 
 class Geocode(object):
     def get(self, address):

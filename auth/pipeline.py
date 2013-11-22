@@ -21,7 +21,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
         user_info = get_data.call_api('fql', quote('SELECT uid,name,current_location.name, current_location.latitude, '
                                                    'current_location.longitude, pic_big, profile_url, friend_count '
-                                                   'FROM user WHERE uid=me()'))
+                                                   'FROM user WHERE uid=me()'), ',')
 
         friends = get_data.call_api('fql', {'q': quote('SELECT uid, name,current_location.name, current_location.latitude, '
                                                        'current_location.longitude, pic_square, profile_url '

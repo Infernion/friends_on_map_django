@@ -5,8 +5,6 @@ import time
 import logging
 from urllib import quote, unquote_plus
 
-#from django.core.cache import cache as memcache
-
 
 class GetFacebookData(object):
     '''
@@ -36,9 +34,7 @@ class GetFacebookData(object):
             params_list = [params]
 
         params_list += [('access_token', self.token)]
-        print 'p_list', params_list
         url = 'https://graph.facebook.com/%s?%s' % (method, unquote_plus(urlencode(params_list)))
-        print 'facebook_url', url
 
         response = urllib2.urlopen(url).read()
         self.last_time = time.clock()

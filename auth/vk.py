@@ -3,6 +3,7 @@ import urllib2
 import json
 import time
 import logging
+import geocode
 
 from django.core.cache import cache as memcache
 
@@ -103,7 +104,7 @@ class GetVkData(object):
             city = self.get_city(field[city_id])
             country = self.get_country(field[country_id])
             address = '%s, %s' % (city, country)
-            #location = Geocode().get(address)
+            location = Geocode().get(address)
             return address, location
 
         def format(field, first_name, last_name):
@@ -115,19 +116,27 @@ class GetVkData(object):
                 if 'city' in field:
                     # Friends with city and country
                     friends.append({'name': format(field, 'first_name', 'last_name'),
-                                    'address': format_address(field, 'city', 'country')[0],
-                                    #'location': format_address(field, 'city', 'country')[1],
-                                    'uid': field['uid'], 'photo': field['photo']})
-
+                                    'current_location': {
+                                        'name': format_address(field, 'city', 'country')[0],
+                                        'latitude': format_address(field, 'city', 'country')[1][0],
+                                        'longitude': format_address(field, 'city', 'country')[1][1],
+                                    }
+                                    'uid': field['uid'], 'pic_square': field['photo']})
                 elif 'city' not in field:
                     friends.append({'name': (format(field, 'first_name', 'last_name')),
-                                    'address': format_address(field, '', 'country')[0],
-                                    #'location': format_address(field, '', 'country')[1],
+                                    'current_location': {
+                                        'name': format_address(field, '', 'country')[0],
+                                        'latitude': format_address(field, '', 'country')[1][0],
+                                        'longitude': format_address(field, '', 'country')[1][1],
+                                    }
                                     'uid': field['uid'], 'photo': field['photo']})
             else:
             # Who haven't home
                 friends.append({'name': (format(field, 'first_name', 'last_name')),
-                                'address': 'Antarctica',
-                                #'location': '-82.471829,-118.857425',
+                                'current_location': {
+                                        'name': 'Antarctica',
+                                        'latitude': '-82.471829',
+                                        'longitude': '-118.857425',
+                                }
                                 'uid': field['uid'], 'photo': field['photo']})
         return friends

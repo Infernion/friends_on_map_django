@@ -10,7 +10,7 @@ logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(a
 
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
-    photo_url, friends = 'test', 'etst'
+    photo_url, friends = None, None
     if strategy.backend.name == 'facebook':
         from urllib import quote
         from facebook import GetFacebookData
@@ -19,14 +19,9 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
             strategy.backend.name, uid)
         get_data = GetFacebookData(response['id'], response['access_token'])
         photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
-        print 'photo_url', photo_url
-        # FQL for friends is:
-        #         SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude
-        #         FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())
-        query = quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude '
-                   'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())', ',')
+        query = quote('SELECT uid, name,current_location.name, current_location.latitude, current_location.longitude, pic_square, profile_url '
+                      'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())', ',')
         friends = get_data.call_api('fql', {'q': query})
-        print 'user_fr', friends
     if photo_url and friends:
         social.set_extra_data({'photo': photo_url, 'friends': friends})
 
@@ -38,15 +33,12 @@ def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):
 
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
-        get_data = GetVkData(response['uid'], response['access_token'])  # uid, token
-        logging.info('get_data', get_data)
-        #user_info = get_data.call_api('users.get', {'fields': 'city,country'})
+        get_data = GetVkData(response['uid'], response['access_token'])
         photo_url = (get_data.call_api('users.get', {'fields': 'photo_rec'}))['photo_rec']
-        #logging.info('user_in ', user_info)
         friends = get_data.call_api('friends.get', {'fields': 'uid,first_name,last_name,country,city,photo'})
-        logging.info('user_fr', friends)
+        friends_formated = get_data.get_friends_from_json(friends)
     if photo_url and friends:
-        social.set_extra_data({'photo': photo_url, 'friends': friends})
+        social.set_extra_data({'photo': photo_url, 'friends': friends_formated})
 
 
 

@@ -5,7 +5,7 @@ import time
 import logging
 from geocode import Geocode
 
-#from django.core.cache import cache as memcache
+from django.core.cache import cache as memcache
 
 
 logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s',
@@ -49,8 +49,8 @@ class GetVkData(object):
         Take id and return format city string
         '''
         # print 'ID', id
-        #city = memcache.get('cid: %s' % id)
-        city = None
+        city = memcache.get('cid: %s' % id)
+        #city = None
         if city is not None:
             return city
         else:
@@ -58,7 +58,7 @@ class GetVkData(object):
                 get_city = (self.call_api('places.getCityById', {'cids': id['name']}))
             except:
                 return ''
-            #city = memcache.set('cid: %s' % id, get_city)
+            city = memcache.set('cid: %s' % id, get_city)
             return get_city
 
     def call_api(self, method, params):

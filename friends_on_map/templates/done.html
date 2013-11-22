@@ -3,8 +3,14 @@
 
 {% block sidebar %}
 <p>You are logged in as {{ user.username }}!</p>
-<img src="{{ user_model.extra_data.photo }}">
-{% if backends.associated %}
+ <ul class="media-grid">
+  <li>
+    <a href="">
+      <img class="thumbnail" src="{{ user_model.extra_data.photo }}" alt="">
+    </a>
+  </li>
+</ul>
+ {% if backends.associated %}
 <p>Associated:</p>
 <ul>
   {% for assoc in backends.associated %}

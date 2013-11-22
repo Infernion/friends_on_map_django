@@ -141,7 +141,7 @@ class GetVkData(object):
     def format_address(self, field, city_id, country_id):
         city = self.get_city(field[city_id])
         country = self.get_country(field[country_id])
-        address = '%s, %s' % (smart_str(city), smart_str(country))
+        address = '%s, %s' % (smart_unicode(city), smart_unicode(country))
         #logging.warning(field[city_id])
         #logging.warning(city)
         #logging.warning(country)

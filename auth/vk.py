@@ -104,6 +104,7 @@ class GetVkData(object):
         :return: list of friends form: ['First_name Last_name', 'City, Country', city=bool, country=bool]
         '''
         friends = []
+        logging.warning(user_friends)
         for field in user_friends:
             if 'country' in field:
                 if 'city' in field:

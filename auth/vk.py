@@ -144,7 +144,7 @@ class GetVkData(object):
         #logging.warning(field[city_id])
         #logging.warning(city)
         #logging.warning(country)
-        logging.warning(address)
+        #logging.warning(address)
         location = Geocode().get(address)
         return address, location
 

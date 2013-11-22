@@ -4,6 +4,7 @@ from django.core.cache import cache as memcache
 import urllib
 import json
 import time
+import logging
 
 class Geocode(object):
     def get(self, address):
@@ -14,7 +15,9 @@ class Geocode(object):
         :return: geodata [lat, lng]
         """
         format_address = "+".join(address.split())
+        logging.warning(format_address)
         cached_coords = memcache.get('%s' % format_address)
+        logging.warning(cached_coords)
         #cached_coords = None
         if cached_coords is not None:
             return cached_coords

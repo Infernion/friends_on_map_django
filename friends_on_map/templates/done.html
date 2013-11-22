@@ -3,7 +3,7 @@
 
 {% block sidebar %}
 <p>You are logged in as {{ user.username }}!</p>
-<img src="{{ user.photo }}">
+<img src="{{ user_model.extra_data.photo }}">
 {% if backends.associated %}
 <p>Associated:</p>
 <ul>

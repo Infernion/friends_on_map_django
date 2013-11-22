@@ -109,7 +109,8 @@ class GetVkData(object):
             if 'country' in field:
                 if 'city' in field:
                     # Friends with city and country
-                    #logging.warning('city_in_field')
+                    logging.warning('city_in_field')
+                    logging.warning(field)
                     friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
                                         'name': self.format_address(field, 'city', 'country')[0],

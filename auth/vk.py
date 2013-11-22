@@ -109,7 +109,7 @@ class GetVkData(object):
         friends = []
         for field in user_friends:
             data = memcache.get('f_data: %s' % field['uid'])
-            if data not None:
+            if data is not None:
                 friends.append(data)
             if 'country' in field:
                 if 'city' in field:

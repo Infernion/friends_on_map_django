@@ -30,7 +30,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
                                                 'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())',
                                                 ',')})
         if photo_url and friends:
-            social.set_extra_data({'friends': friends, 'user_info': user_info})
+            social.set_extra_data({'photo': photo_url, 'friends': friends, 'user_info': user_info})
 
 
 def get_data_vk(strategy, details, response, uid, user, *args, **kwargs):

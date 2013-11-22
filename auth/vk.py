@@ -99,41 +99,40 @@ class GetVkData(object):
         :user_friends: dict user friends
         :return: list of friends form: ['First_name Last_name', 'City, Country', city=bool, country=bool]
         '''
-
-        def format_address(field, city_id, country_id):
-            city = self.get_city(field[city_id])
-            country = self.get_country(field[country_id])
-            address = '%s, %s' % (city, country)
-            location = Geocode().get(address)
-            return address, location
-
-        def format(field, first_name, last_name):
-            return '%s %s' % (field[first_name], field[last_name])
-
         friends = []
         for field in user_friends:
             if 'country' in field:
                 if 'city' in field:
                     # Friends with city and country
-                    friends.append({'name': format(field, 'first_name', 'last_name'),
+                    friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
-                                        'name': format_address(field, 'city', 'country')[0],
-                                        'latitude': format_address(field, 'city', 'country')[1][0],
-                                        'longitude': format_address(field, 'city', 'country')[1][1]},
+                                        'name': self.format_address(field, 'city', 'country')[0],
+                                        'latitude': self.format_address(field, 'city', 'country')[1][0],
+                                        'longitude': self.format_address(field, 'city', 'country')[1][1]},
                                     'uid': field['uid'], 'pic_square': field['photo']})
                 elif 'city' not in field:
-                    friends.append({'name':format(field, 'first_name', 'last_name'),
+                    friends.append({'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
-                                        'name': format_address(field, '', 'country')[0],
-                                        'latitude': format_address(field, '', 'country')[1][0],
-                                        'longitude': format_address(field, '', 'country')[1][1]},
+                                        'name': self.format_address(field, '', 'country')[0],
+                                        'latitude': self.format_address(field, '', 'country')[1][0],
+                                        'longitude': self.format_address(field, '', 'country')[1][1]},
                                     'uid': field['uid'], 'photo': field['photo']})
             else:
             # Who haven't home
-                friends.append({'name': (format(field, 'first_name', 'last_name')),
+                friends.append({'name': (self.format(field, 'first_name', 'last_name')),
                                 'current_location': {
                                         'name': 'Antarctica',
                                         'latitude': '-82.471829',
                                         'longitude': '-118.857425'},
                                 'uid': field['uid'], 'photo': field['photo']})
         return friends
+
+    def format_address(self, field, city_id, country_id):
+        city = self.get_city(field[city_id])
+        country = self.get_country(field[country_id])
+        address = '%s, %s' % (city, country)
+        location = Geocode().get(address)
+        return address, location
+
+    def format(self, field, first_name, last_name):
+        return '%s %s' % (field[first_name], field[last_name])

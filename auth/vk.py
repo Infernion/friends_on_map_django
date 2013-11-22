@@ -57,7 +57,7 @@ class GetVkData(object):
             return city
         else:
             #try:
-            get_city = (self.call_api('places.getCityById', {'cids': id}))['name']
+            get_city =((self.call_api('places.getCityById', {'cids': id}))['name']).encode(encoding='utf-8')
             #logging.warning(get_city)
             #except IndexError:
             #    return ''

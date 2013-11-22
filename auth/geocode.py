@@ -23,7 +23,7 @@ class Geocode(object):
         else:
             geodata = {u'status': u'', u'results': []}
             while not geodata['results']:
-                geodata_json = urllib.urlopen(
+                geodata_json = urlopen(
                             url="https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" %
                                 format_address).read()
                 geodata = json.loads(geodata_json)

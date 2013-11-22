@@ -26,7 +26,7 @@ class Geocode(object):
                                 format_address).read()
                 geodata = json.loads(geodata_json)
                 time.sleep(1)
-            print geodata
+            #print geodata
             try:
                 geodata = geodata['results'][0]['geometry']['viewport']['northeast']
                 coords = [geodata['lat'], geodata['lng']]

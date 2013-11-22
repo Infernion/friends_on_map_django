@@ -10,7 +10,7 @@ logging.basicConfig(format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(a
 
 
 def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
-    photo_url, friends = None, None
+    user_info, friends = None, None
     if strategy.backend.name == 'facebook':
         from urllib import quote
         from facebook import GetFacebookData
@@ -18,7 +18,6 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
         social = kwargs.get('social') or strategy.storage.user.get_social_auth(
             strategy.backend.name, uid)
         get_data = GetFacebookData(response['id'], response['access_token'])
-        photo_url = 'http://graph.facebook.com/%s/picture?type=large' % response['id']
         user_info = get_data.call_api('fql',
                                       {'q': quote('SELECT uid,name,current_location.name, current_location.latitude, '
                                                   'current_location.longitude, pic_big, profile_url, friend_count '
@@ -29,7 +28,7 @@ def get_data_fb(strategy, details, response, uid, user, *args, **kwargs):
                                                 'current_location.longitude, pic_square, profile_url '
                                                 'FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1=me())',
                                                 ',')})
-        if photo_url and friends:
+        if user_info and friends:
             social.set_extra_data({'friends': friends, 'user_info': user_info})
 
 

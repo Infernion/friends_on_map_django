@@ -1,1 +1,1 @@
-web: gunicorn -k 'eventlet' friends_on_map.wsgi
+web: gunicorn friends_on_map.wsgi

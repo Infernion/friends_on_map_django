@@ -40,11 +40,11 @@
 {#                google.maps.event.addListener(marker, 'click', function() {#}
 {#                    infowindow.open(map,marker);#}
 {#                });#}
-            addMarker({{ user_model.extra_data.user_info.current_location.latitude }},
-                    {{ user_model.extra_data.user_info.current_location.longitude }},
-                    {{ user_model.extra_data.user_info.name }},
-                    {{ user_model.extra_data.user_info.current_location.name }},
-                    {{ user_model.extra_data.user_info.pic_big }})
+            addMarker("{{ user_model.extra_data.user_info.current_location.latitude }}",
+                    "{{ user_model.extra_data.user_info.current_location.longitude }}",
+                    "{{ user_model.extra_data.user_info.name }}",
+                    "{{ user_model.extra_data.user_info.current_location.name }}",
+                    "{{ user_model.extra_data.user_info.pic_big }}")
 
         }
 

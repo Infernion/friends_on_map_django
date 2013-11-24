@@ -27,25 +27,20 @@
 
                 map = new google.maps.Map(document.getElementById('map-canvas'),
                         mapOptions);
-{#                var marker = new google.maps.Marker({#}
-{#                    position: myLatlng,#}
-{#                    map: map,#}
-{#                    title:"{{ user_model.extra_data.user_info.name }}",#}
-{#                    icon: "/static/img/Map-Marker.png"#}
-{#                });#}
-{##}
-{#                var infowindow = new google.maps.InfoWindow({#}
-{#                    content: "test"#}
-{#                });#}
-{#                google.maps.event.addListener(marker, 'click', function() {#}
-{#                    infowindow.open(map,marker);#}
-{#                });#}
             addMarker("{{ user_model.extra_data.user_info.current_location.latitude }}",
                     "{{ user_model.extra_data.user_info.current_location.longitude }}",
                     "{{ user_model.extra_data.user_info.name }}",
                     "{{ user_model.extra_data.user_info.current_location.name }}",
-                    "{{ user_model.extra_data.user_info.pic_big }}")
-
+                    "{{ user_model.extra_data.user_info.pic_big }}");
+{#            {% if backends.associated %}#}
+{#                {% for friend in friends %}#}
+{#                    addMarker("{{ friend.current_location.latitude }}",#}
+{#                            "{{ friend.current_location.longitude }}",#}
+{#                            "{{ friend.name }}",#}
+{#                            "{{ friend.current_location.namee }}",#}
+{#                            "{{ friend.pic_squre }}");#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
         }
 
         function addMarker(lat,lng,name,address,photo) {
@@ -62,8 +57,7 @@
                   '</div>';
 
              var Marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat,lng),
-                    map: map,
+                    position: new google.maps.LatLng(lat,lng),
                     title: name,
              });
 
@@ -76,12 +70,12 @@
 
              });
 
+             Marker.setMap(map);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     {% block scripts %}{% endblock %}
     {% block head_scripts %}{% endblock %}
-    </script>
   </head>
 
   <body>

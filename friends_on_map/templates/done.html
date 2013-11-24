@@ -7,9 +7,8 @@
           var json1 = {{ friends|safe }};
 {#        $.getJSON("", function(json1) {#}
           $.each(json1, function(key, data) {
-{#              try{#}
-          var latLng = new google.maps.LatLng(data.latitude, data.longitude);
-          console.log(latLng)
+          var latLng = new google.maps.LatLng(data.current_location.latitude, data.longitude);
+{#          console.log(data.current_location.latitude)#}
             /*Creating info window and show after click on marker*/
 {#            var contentString = '<div id="content">'+#}
 {#              '<div id="siteNotice">'+#}
@@ -27,7 +26,7 @@
               /* Creating a marker and putting it on the map*/
             var marker = new google.maps.Marker({
                 position: latLng,
-                //title: data.name,
+                title: data.name,
                 title: "test",
             });
             marker.setMap(map);
@@ -36,7 +35,7 @@
 {#                infowindow.open(map,marker);#}
 {#            });#}
          // });
-{#        });#}
+        });
       });
 </script>
 {% endblock %}

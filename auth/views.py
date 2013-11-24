@@ -21,6 +21,7 @@ def login(request):
 def done(request):
     """Login complete view, displays user data"""
     user_model = None
+    frinds_json = None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
         frinds_json = json.dump(user_model.extra_data.friends)

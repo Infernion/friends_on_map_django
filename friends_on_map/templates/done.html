@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% load url from future %}
+{% load i18n %}
 
 {% block sidebar %}
-<p>You are logged in as {{ user.username }}!</p>
+<p>{% trans "You are logged" %} in as {{ user.username }}!</p>
 <img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
-<p>Name: {{ user_model.extra_data.user_info.name }}</p>
-<p>You are from: {{ user_model.extra_data.user_info.current_location.name }} </p>
+<p>{% trans "Name"%}: {{ user_model.extra_data.user_info.name }}</p>
+<p>{% trans "You are from"%}: {{ user_model.extra_data.user_info.current_location.name }} </p>
  {% if backends.associated %}
-<p>Associated:</p>
+<p>{% trans "Associated"%}:</p>
 <ul>
   {% for assoc in backends.associated %}
     <li>
@@ -18,7 +19,7 @@
 {% endif %}
 
 {% if backends.not_associated %}
-<p>Associate:</p>
+<p>{% trans "Associate"%}:</p>
 <ul>
   {% for name in backends.not_associated %}
     <li>
@@ -43,5 +44,43 @@
         $('#google-plus').submit();
       }
   };
+</script>
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+       $(document).ready(function() {
+        $.getJSON("{{ user_model.extra_data.friends }}", function(json1) {
+          $.each(json1, function(key, data) {
+            var latLng = new google.maps.LatLng(data.current_location.latitude, data.current_location.longitude );
+
+              /*Creating info window and show after click on marker*/
+              var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<p>'+ data.name +'</p>'+
+              '<div id="bodyContent">'+
+              '<img src="'+ data.photo +'">'+
+              '<p>'+ data.current_location.name +'</p>'+
+              '<href="http://vk.com/id'+ data.uid + '">'+
+              '</div>'+
+              '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+              /* Creating a marker and putting it on the map*/
+            var marker = new google.maps.Marker({
+                position: latLng,
+                title: data.name
+            });
+            marker.setMap(map);
+
+              google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+          });
+        });
+      });
 </script>
 {% endblock %}

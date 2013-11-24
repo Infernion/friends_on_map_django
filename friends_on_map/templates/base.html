@@ -15,7 +15,7 @@
     function initialize() {
   var mapOptions = {
     zoom: 8,
-    center: new google.maps.LatLng(-34.397, 150.644),
+    center: new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},{{ user_model.extra_data.user_info.current_location.longitude }}),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -52,7 +52,6 @@ window.onload = loadScript;
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">{% trans "Home" %}</a></li>
             <li><a href="#about">{% trans "About" %}</a></li>
-            <li><a href="#contact">{% trans "Contact" %}</a></li>
           </ul>
           <ul class="nav navbar-right"><!-- Set language start -->
             <form action="/i18n/setlang/" class="active" method="post">

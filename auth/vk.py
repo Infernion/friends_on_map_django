@@ -154,7 +154,7 @@ class GetVkData(object):
         except:
             pass
         country = self.get_country(field[country_id])
-        address = '%s, %s' % (city, country.encode(encoding='utf-8'))
+        address = '%s %s' % (city, country.encode(encoding='utf-8'))
         #logging.warning(field[city_id])
         #logging.warning(city)
         #logging.warning(country)

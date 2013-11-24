@@ -55,8 +55,8 @@
           $.each(json1, function(key, data) {
             var latLng = new google.maps.LatLng(data.current_location.latitude, data.current_location.longitude );
 
-              /*Creating info window and show after click on marker*/
-              var contentString = '<div id="content">'+
+            /*Creating info window and show after click on marker*/
+            var contentString = '<div id="content">'+
               '<div id="siteNotice">'+
               '</div>'+
               '<p>'+ data.name +'</p>'+
@@ -66,8 +66,7 @@
               '<href="http://vk.com/id'+ data.uid + '">'+
               '</div>'+
               '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
+            var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
               /* Creating a marker and putting it on the map*/
@@ -77,9 +76,9 @@
             });
             marker.setMap(map);
 
-              google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-  });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
           });
         //});
       });

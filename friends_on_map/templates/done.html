@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% load url from future %}
 {% load i18n %}
-{#{% block scripts %}#}
-{#<script type="text/javascript">#}
-{#       $(document).ready(function() {#}
+{% block scripts %}
+<script type="text/javascript">
+       $(document).ready(function() {
+           addMarker("{{ user_model.extra_data.friends.current_location.latitude }}",
+                    "{{ user_model.extra_data.friends.current_location.longitude }}",
+                    "{{ user_model.extra_data.friends.name }}",
+                    "{{ user_model.extra_data.friends.current_location.name }}",
+                    "{{ user_model.extra_data.friends.pic_square }}")
+       });
 {#          var json1 = {{ friends|safe }};#}
 {#        $.getJSON("", function(json1) {#}
 {#          $.each(json1, function(key, data) {#}
@@ -37,8 +43,8 @@
 {#         // });#}
 {#        });#}
 {#      });#}
-{#</script>#}
-{#{% endblock %}#}
+</script>
+{% endblock %}
 
 {% block sidebar %}
 <p>{% trans "You are logged" %} in as {{ user.username }}!</p>

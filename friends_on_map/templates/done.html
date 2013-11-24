@@ -50,46 +50,41 @@
 {% block content %}
 <script type="text/javascript">
        $(document).ready(function() {
-          var json1 = {{ friends|safe }};
+         // var json1 = {{ friends|safe }};
         //$.getJSON("", function(json1) {
-          $.each(json1, function(key, data) {
+          //$.each(json1, function(key, data) {
               try{
-                  var latLng = new google.maps.LatLng(parseInt(data.current_location.latitude),
-                    parseInt(data.current_location.longitude));
+                  var latLng = new google.maps.LatLng(-82.471829, -118.857425);
               }
               catch (e){
-                  if (!e){
-
-                  }
                   console.log(e)
-                  return false
               }
             console.log(latLng)
             /*Creating info window and show after click on marker*/
-            var contentString = '<div id="content">'+
-              '<div id="siteNotice">'+
-              '</div>'+
-              '<p>'+ data.name +'</p>'+
-              '<div id="bodyContent">'+
-              '<img src="'+ data.photo +'">'+
-              '<p>'+ data.current_location.name +'</p>'+
-              '<href="http://vk.com/id'+ data.uid + '">'+
-              '</div>'+
-              '</div>';
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+{#            var contentString = '<div id="content">'+#}
+{#              '<div id="siteNotice">'+#}
+{#              '</div>'+#}
+{#              '<p>'+ data.name +'</p>'+#}
+{#              '<div id="bodyContent">'+#}
+{#              '<img src="'+ data.photo +'">'+#}
+{#              '<p>'+ data.current_location.name +'</p>'+#}
+{#              '<href="http://vk.com/id'+ data.uid + '">'+#}
+{#              '</div>'+#}
+{#              '</div>';#}
+{#            var infowindow = new google.maps.InfoWindow({#}
+{#                content: contentString#}
+{#            });#}
               /* Creating a marker and putting it on the map*/
             var marker = new google.maps.Marker({
                 position: latLng,
-                title: data.name
+                //title: data.name
             });
             marker.setMap(map);
 
             google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map,marker);
             });
-          });
+         // });
         //});
       });
 </script>

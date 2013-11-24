@@ -53,12 +53,12 @@
          // var json1 = {{ friends|safe }};
         //$.getJSON("", function(json1) {
           //$.each(json1, function(key, data) {
-              try{
+{#              try{#}
                   var latLng = new google.maps.LatLng(-82.471829, -118.857425);
-              }
-              catch (e){
-                  console.log(e)
-              }
+{#              }#}
+{#              catch (e){#}
+{#                  console.log(e)#}
+{#              }#}
             console.log(latLng)
             /*Creating info window and show after click on marker*/
 {#            var contentString = '<div id="content">'+#}
@@ -77,11 +77,11 @@
               /* Creating a marker and putting it on the map*/
             var marker = new google.maps.Marker({
                 position: latLng,
-                map: map,
                 //title: data.name,
+                title: "test",
                 icon: "/static/img/Map-Marker.png",
             });
-            //marker.setMap(map);
+            marker.setMap(map);
 
             google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map,marker);

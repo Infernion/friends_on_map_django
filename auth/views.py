@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import login_required
 from social.apps.django_app.default.models import DjangoStorage
+import json
 
 
 def login(request):
@@ -22,9 +23,11 @@ def done(request):
     user_model = None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
+        frinds_json = json.dump(user_model.extra_data.friends)
     except:
         pass
     return render_to_response('done.html', {
+        'friends': frinds_json,
         'user_model': user_model,
         'user': request.user,
         'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),

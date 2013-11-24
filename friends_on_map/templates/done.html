@@ -50,7 +50,8 @@
 {% block content %}
 <script type="text/javascript">
        $(document).ready(function() {
-        $.getJSON("{{ user_model.extra_data.friends }}", function(json1) {
+          var json1 = {{ user_model.extra_data.friends }};
+        //$.getJSON("", function(json1) {
           $.each(json1, function(key, data) {
             var latLng = new google.maps.LatLng(data.current_location.latitude, data.current_location.longitude );
 
@@ -80,7 +81,7 @@
     infowindow.open(map,marker);
   });
           });
-        });
+        //});
       });
 </script>
 {% endblock %}

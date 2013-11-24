@@ -16,25 +16,25 @@
             google.maps.visualRefresh = true;
             var map;
             function initialize() {
+                var myLatlng = new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},
+                            {{ user_model.extra_data.user_info.current_location.longitude }}
+                );
                 var mapOptions = {
                     zoom: 8,
-                    center: new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},
-                            {{ user_model.extra_data.user_info.current_location.longitude }}),
+                    center: myLatlng,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
                 map = new google.maps.Map(document.getElementById('map-canvas'),
                         mapOptions);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title:"{{ user_model.extra_data.user_info.name }}",
+                    icon: "/static/img/Map-Marker.png"
+        });
             }
 
-{#            function loadScript() {#}
-{#                var script = document.createElement('script');#}
-{#                script.type = 'text/javascript';#}
-{#                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M&sensor=false&' +#}
-{#                        'callback=initialize';#}
-{#                document.body.appendChild(script);#}
-{#            }#}
-{#            window.onload = loadScript;#}
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     {% block head_scripts %}{% endblock %}

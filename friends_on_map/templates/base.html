@@ -37,11 +37,11 @@
                 {% if backends.associated %}
                     var json1 = {{ friends|safe }};
                     $.each(json1, function(key, data){
-                    addMarker("{{ data.current_location.latitude }}",
-                        "{{ data.current_location.longitude }}",
-                        "{{ data.name }}",
-                        "{{ data.current_location.name }}",
-                        "{{ data.pic_square }}");
+                    addMarker(data.current_location.latitude,
+                        data.current_location.longitude,
+                        data.name,
+                        data.current_location.name,
+                        data.pic_square);
                         console.log(data.name);
                     });
                 {% endif %}
@@ -75,6 +75,9 @@
              });
 
              Marker.setMap(map);
+{#        google.maps.event.addListenerOnce(map, 'idle', function(){#}
+{#            #}
+{#        });#}
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>

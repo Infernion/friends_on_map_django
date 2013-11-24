@@ -53,9 +53,14 @@
           var json1 = {{ friends|safe }};
         //$.getJSON("", function(json1) {
           $.each(json1, function(key, data) {
-            var latLng = new google.maps.LatLng(parseInt(data.current_location.latitude),
+              try{
+                  var latLng = new google.maps.LatLng(parseInt(data.current_location.latitude),
                     parseInt(data.current_location.longitude));
-            console.log(data.current_location.latitude)
+              }
+              catch (e){
+                  console.log(e)
+              }
+            console.log(latLng)
             /*Creating info window and show after click on marker*/
             var contentString = '<div id="content">'+
               '<div id="siteNotice">'+

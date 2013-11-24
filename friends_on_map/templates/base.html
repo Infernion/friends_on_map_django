@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <title>{% trans "Friends on Map" %}</title>
@@ -35,8 +35,11 @@
                 });
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: "Hello"
+                    content: "test"
                 });
+                    {% block scripts %}
+
+                    {% endblock %}
 
                 google.maps.event.addListener(marker, 'click', function() {
                     infowindow.open(map,marker);
@@ -47,6 +50,7 @@
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     {% block head_scripts %}{% endblock %}
+    </script>
   </head>
 
   <body>
@@ -97,52 +101,8 @@
         </div><!--/span-->
       </div>
 
-    {% block scripts %}
-        <script type="text/javascript">
-       $(document).ready(function() {
-{#          var json1 = {{ friends|safe }};#}
-        //$.getJSON("", function(json1) {
-          //$.each(json1, function(key, data) {
-{#              try{#}
-                  var latLng = new google.maps.LatLng(-82.471829, -118.857425);
-{#              }#}
-{#              catch (e){#}
-{#                  console.log(e)#}
-{#              }#}
-            console.log(latLng)
-            /*Creating info window and show after click on marker*/
-{#            var contentString = '<div id="content">'+#}
-{#              '<div id="siteNotice">'+#}
-{#              '</div>'+#}
-{#              '<p>'+ data.name +'</p>'+#}
-{#              '<div id="bodyContent">'+#}
-{#              '<img src="'+ data.photo +'">'+#}
-{#              '<p>'+ data.current_location.name +'</p>'+#}
-{#              '<href="http://vk.com/id'+ data.uid + '">'+#}
-{#              '</div>'+#}
-{#              '</div>';#}
-            var infowindow = new google.maps.InfoWindow({
-                content: "test"
-            });
-              /* Creating a marker and putting it on the map*/
-            var marker = new google.maps.Marker({
-                position: latLng,
-                //title: data.name,
-                map: map,
-                title: "test",
-                icon: "/static/img/Map-Marker.png",
-            });
-            marker.setMap(map);
 
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
-            });
-         // });
-        //});
-      });
-</script>
-    {% endblock %}
-    
+
   
     <form method="post" action="" id="disconnect-form">{% csrf_token %}</form>
     <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>

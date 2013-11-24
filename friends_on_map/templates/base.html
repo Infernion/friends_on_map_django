@@ -88,7 +88,51 @@
         </div><!--/span-->
       </div>
 
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+        <script type="text/javascript">
+       $(document).ready(function() {
+{#          var json1 = {{ friends|safe }};#}
+        //$.getJSON("", function(json1) {
+          //$.each(json1, function(key, data) {
+{#              try{#}
+                  var latLng = new google.maps.LatLng(-82.471829, -118.857425);
+{#              }#}
+{#              catch (e){#}
+{#                  console.log(e)#}
+{#              }#}
+            console.log(latLng)
+            /*Creating info window and show after click on marker*/
+{#            var contentString = '<div id="content">'+#}
+{#              '<div id="siteNotice">'+#}
+{#              '</div>'+#}
+{#              '<p>'+ data.name +'</p>'+#}
+{#              '<div id="bodyContent">'+#}
+{#              '<img src="'+ data.photo +'">'+#}
+{#              '<p>'+ data.current_location.name +'</p>'+#}
+{#              '<href="http://vk.com/id'+ data.uid + '">'+#}
+{#              '</div>'+#}
+{#              '</div>';#}
+{#            var infowindow = new google.maps.InfoWindow({#}
+{#                content: contentString#}
+{#            });#}
+              /* Creating a marker and putting it on the map*/
+            var marker1 = new google.maps.Marker({
+                position: latLng,
+                //title: data.name,
+                map: map,
+                title: "test",
+                icon: "/static/img/Map-Marker.png",
+            });
+{#            marker.setMap(map);#}
+
+{#            google.maps.event.addListener(marker, 'click', function() {#}
+{#                infowindow.open(map,marker);#}
+{#            });#}
+         // });
+        //});
+      });
+</script>
+    {% endblock %}
     
   
     <form method="post" action="" id="disconnect-form">{% csrf_token %}</form>

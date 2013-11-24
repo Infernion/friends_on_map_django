@@ -16,9 +16,14 @@
         google.maps.visualRefresh = true;
         var map;
         function initialize() {
-                var myLatlng = new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},
-                            {{ user_model.extra_data.user_info.current_location.longitude }}
-                );
+                {% if backends.associated %}
+                    var myLatlng = new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},
+                                {{ user_model.extra_data.user_info.current_location.longitude }}
+                    );
+                {% else %}
+                    var myLatlng = new google.maps.LatLng(0,0);
+                {% endif %}
+
                 var mapOptions = {
                     zoom: 3,
                     center: myLatlng,
@@ -29,10 +34,10 @@
                         mapOptions);
 
                 addMarker("{{ user_model.extra_data.user_info.current_location.latitude }}",
-                    "{{ user_model.extra_data.user_info.current_location.longitude }}",
-                    "{{ user_model.extra_data.user_info.name }}",
-                    "{{ user_model.extra_data.user_info.current_location.name }}",
-                    "{{ user_model.extra_data.user_info.pic_big }}");
+                            "{{ user_model.extra_data.user_info.current_location.longitude }}",
+                            "{{ user_model.extra_data.user_info.name }}",
+                            "{{ user_model.extra_data.user_info.current_location.name }}",
+                            "{{ user_model.extra_data.user_info.pic_big }}");
 
                 {% if backends.associated %}
                     var json1 = {{ friends|safe }};
@@ -75,9 +80,6 @@
              });
 
              Marker.setMap(map);
-{#        google.maps.event.addListenerOnce(map, 'idle', function(){#}
-{#            #}
-{#        });#}
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>

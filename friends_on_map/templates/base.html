@@ -32,15 +32,15 @@
                     "{{ user_model.extra_data.user_info.name }}",
                     "{{ user_model.extra_data.user_info.current_location.name }}",
                     "{{ user_model.extra_data.user_info.pic_big }}");
-{#            {% if backends.associated %}#}
-{#                {% for friend in friends %}#}
-{#                    addMarker("{{ friend.current_location.latitude }}",#}
-{#                            "{{ friend.current_location.longitude }}",#}
-{#                            "{{ friend.name }}",#}
-{#                            "{{ friend.current_location.namee }}",#}
-{#                            "{{ friend.pic_squre }}");#}
-{#                {% endfor %}#}
-{#            {% endif %}#}
+            {% if backends.associated %}
+                {% for friend in friends %}
+                    addMarker("{{ friend.current_location.latitude }}",
+                            "{{ friend.current_location.longitude }}",
+                            "{{ friend.name }}",
+                            "{{ friend.current_location.namee }}",
+                            "{{ friend.pic_squre }}");
+                {% endfor %}
+            {% endif %}
         }
 
         function addMarker(lat,lng,name,address,photo) {

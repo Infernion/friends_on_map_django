@@ -4,14 +4,16 @@
 {% block scripts %}
 <script type="text/javascript">
        $(document).ready(function() {
-           var json1 = {{ friends|safe }};
-           $.each(json1, function(key, data) {
-           addMarker("{{ data.current_location.latitude }}",
-                    "{{ data.current_location.longitude }}",
-                    "{{ data.friends.name }}",
-                    "{{ data.friends.current_location.name }}",
-                    "{{ data.friends.pic_square }}")
-               });
+{#           var json1 = {{ friends|safe }};#}
+{#           $.each(json1, function(key, data) {#}
+{#               console.log(data.current_location.latitude);#}
+{#               addMarker("{{ data.current_location.latitude }}",#}
+{#                        "{{ data.current_location.longitude }}",#}
+{#                        "{{ data.friends.name }}",#}
+{#                        "{{ data.friends.current_location.name }}",#}
+{#                        "{{ data.friends.pic_square }}")#}
+{#               });#}
+           addMarker("-82.471829", "-118.857425", "test", "Kiev", "http://cs417317.vk.me/v417317365/c921/wN8DBbo0PdI.jpg")
        });
 
 {#        $.getJSON("", function(json1) {#}

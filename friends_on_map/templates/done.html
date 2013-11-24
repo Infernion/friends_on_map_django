@@ -48,13 +48,13 @@
 {% endblock %}
 
 {% block scripts %}
-{#        <script type="text/javascript">#}
+        <script type="text/javascript">
 {#       $(document).ready(function() {#}
-{#          var json1 = {{ friends|safe }};#}
-        //$.getJSON("", function(json1) {
-          //$.each(json1, function(key, data) {
+          var json1 = {{ friends|safe }};
+        $.getJSON("", function(json1) {
+          $.each(json1, function(key, data) {
 {#              try{#}
-                  var latLng = new google.maps.LatLng(-82.471829, -118.857425);
+                  var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 {#              }#}
 {#              catch (e){#}
 {#                  console.log(e)#}
@@ -88,7 +88,7 @@
 {#                infowindow.open(map,marker);#}
 {#            });#}
          // });
-        //});
-{#      });#}
-{#</script>#}
+        });
+      });
+</script>
 {% endblock %}

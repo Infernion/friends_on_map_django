@@ -17,29 +17,28 @@
         var map;
         function initialize() {
                 {% if backends.associated %}
-                    var myLatlng = new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},
-                                {{ user_model.extra_data.user_info.current_location.longitude }}
-                    );
-                {% else %}
-                    var myLatlng = new google.maps.LatLng(0,0);
-                {% endif %}
+
 
                 var mapOptions = {
                     zoom: 3,
-                    center: myLatlng,
+                    center: new google.maps.LatLng(0,0),
                     mapTypeId: google.maps.MapTypeId.TERRAIN
                 };
 
                 map = new google.maps.Map(document.getElementById('map-canvas'),
                         mapOptions);
 
-                addMarker("{{ user_model.extra_data.user_info.current_location.latitude }}",
+                {% if backends.associated %}
+                    var myLatlng = new google.maps.LatLng({{ user_model.extra_data.user_info.current_location.latitude }},
+                                {{ user_model.extra_data.user_info.current_location.longitude }}
+                    );
+
+                    addMarker("{{ user_model.extra_data.user_info.current_location.latitude }}",
                             "{{ user_model.extra_data.user_info.current_location.longitude }}",
                             "{{ user_model.extra_data.user_info.name }}",
                             "{{ user_model.extra_data.user_info.current_location.name }}",
                             "{{ user_model.extra_data.user_info.pic_big }}");
 
-                {% if backends.associated %}
                     var json1 = {{ friends|safe }};
                     $.each(json1, function(key, data){
                     addMarker(data.current_location.latitude,

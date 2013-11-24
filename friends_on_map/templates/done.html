@@ -77,9 +77,10 @@
               /* Creating a marker and putting it on the map*/
             var marker = new google.maps.Marker({
                 position: latLng,
+                map: map,
                 //title: data.name
             });
-            marker.setMap(map);
+            //marker.setMap(map);
 
             google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map,marker);

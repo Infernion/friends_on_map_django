@@ -4,13 +4,16 @@
 {% block scripts %}
 <script type="text/javascript">
        $(document).ready(function() {
-           addMarker("{{ user_model.extra_data.friends.current_location.latitude }}",
-                    "{{ user_model.extra_data.friends.current_location.longitude }}",
-                    "{{ user_model.extra_data.friends.name }}",
-                    "{{ user_model.extra_data.friends.current_location.name }}",
-                    "{{ user_model.extra_data.friends.pic_square }}")
+           var json1 = {{ friends|safe }};
+           $.each(json1, function(key, data) {
+           addMarker("{{ data.current_location.latitude }}",
+                    "{{ data.current_location.longitude }}",
+                    "{{ data.friends.name }}",
+                    "{{ data.friends.current_location.name }}",
+                    "{{ data.friends.pic_square }}")
+               });
        });
-{#          var json1 = {{ friends|safe }};#}
+
 {#        $.getJSON("", function(json1) {#}
 {#          $.each(json1, function(key, data) {#}
 {#          var latLng = new google.maps.LatLng(data.current_location.latitude, data.longitude);#}

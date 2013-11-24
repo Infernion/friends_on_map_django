@@ -26,7 +26,7 @@ def done(request):
     except:
         pass
     if user_model:
-        frinds_json = user_model.extra_data.friends
+        frinds_json = json.dumps(user_model.extra_data['friends'])
     return render_to_response('done.html', {
         'friends': frinds_json,
         'user_model': user_model,

@@ -33,6 +33,14 @@
                     title:"{{ user_model.extra_data.user_info.name }}",
                     icon: "/static/img/Map-Marker.png"
         });
+                var latLng = new google.maps.LatLng(-82.471829, -118.857425);
+                var marker1 = new google.maps.Marker({
+                position: latLng,
+                //title: data.name,
+                map: map,
+                title: "test",
+                icon: "/static/img/Map-Marker.png",
+            });
             }
 
         google.maps.event.addDomListener(window, 'load', initialize);

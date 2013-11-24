@@ -49,7 +49,7 @@
 
 {% block content %}
 <script type="text/javascript">
-       $(document).ready(function() {
+{#       $(document).ready(function() {#}
 {#          var json1 = {{ friends|safe }};#}
         //$.getJSON("", function(json1) {
           //$.each(json1, function(key, data) {
@@ -75,7 +75,7 @@
 {#                content: contentString#}
 {#            });#}
               /* Creating a marker and putting it on the map*/
-            var marker = new google.maps.Marker({
+            var marker1 = new google.maps.Marker({
                 position: latLng,
                 //title: data.name,
                 map: map,
@@ -89,6 +89,6 @@
 {#            });#}
          // });
         //});
-      });
+{#      });#}
 </script>
 {% endblock %}

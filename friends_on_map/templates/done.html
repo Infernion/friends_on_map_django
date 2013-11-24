@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load url from future %}
 {% load i18n %}
-{% block scripts %}
-<script type="text/javascript">
-       $(document).ready(function() {
-          var json1 = {{ friends|safe }};
+{#{% block scripts %}#}
+{#<script type="text/javascript">#}
+{#       $(document).ready(function() {#}
+{#          var json1 = {{ friends|safe }};#}
 {#        $.getJSON("", function(json1) {#}
-          $.each(json1, function(key, data) {
-          var latLng = new google.maps.LatLng(data.current_location.latitude, data.longitude);
+{#          $.each(json1, function(key, data) {#}
+{#          var latLng = new google.maps.LatLng(data.current_location.latitude, data.longitude);#}
 {#          console.log(data.current_location.latitude)#}
-            /*Creating info window and show after click on marker*/
+{#            /*Creating info window and show after click on marker*/#}
 {#            var contentString = '<div id="content">'+#}
 {#              '<div id="siteNotice">'+#}
 {#              '</div>'+#}
@@ -23,22 +23,22 @@
 {#            var infowindow = new google.maps.InfoWindow({#}
 {#                content: contentString#}
 {#            });#}
-              /* Creating a marker and putting it on the map*/
-            var marker = new google.maps.Marker({
-                position: latLng,
-                title: data.name,
-                title: "test",
-            });
-            marker.setMap(map);
-
+{#              /* Creating a marker and putting it on the map*/#}
+{#            var marker = new google.maps.Marker({#}
+{#                position: latLng,#}
+{#                title: data.name,#}
+{#                title: "test",#}
+{#            });#}
+{#            marker.setMap(map);#}
+{##}
 {#            google.maps.event.addListener(marker, 'click', function() {#}
 {#                infowindow.open(map,marker);#}
 {#            });#}
-         // });
-        });
-      });
-</script>
-{% endblock %}
+{#         // });#}
+{#        });#}
+{#      });#}
+{#</script>#}
+{#{% endblock %}#}
 
 {% block sidebar %}
 <p>{% trans "You are logged" %} in as {{ user.username }}!</p>

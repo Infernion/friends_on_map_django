@@ -21,12 +21,12 @@ def login(request):
 def done(request):
     """Login complete view, displays user data"""
     user_model = None
-    frinds_json = None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
-        frinds_json = json.dumps(user_model.extra_data.friends)
     except:
         pass
+    if user_model:
+        frinds_json = user_model.extra_data.friends
     return render_to_response('done.html', {
         'friends': frinds_json,
         'user_model': user_model,
@@ -35,6 +35,6 @@ def done(request):
         'fb_uid': getattr(settings, 'SOCIAL_AUTH_FACEBOOK_KEY', None),
     }, RequestContext(request))
 
-def home(request):
+def json(request):
     pass
     

@@ -141,8 +141,8 @@ class GetVkData(object):
                 friends.append({'name': (self.format(field, 'first_name', 'last_name')),
                                 'current_location': {
                                     'name': 'Antarctica',
-                                    'latitude': '-82.471829',
-                                    'longitude': '-118.857425'},
+                                    'latitude': -82.471829,
+                                    'longitude': -118.857425},
                                 'uid': field['uid'], 'photo': field['photo']})
         logging.warning(friends)
         return friends

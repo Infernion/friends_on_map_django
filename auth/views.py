@@ -24,7 +24,7 @@ def done(request):
     frinds_json = None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
-        frinds_json = json.dump(user_model.extra_data.friends)
+        frinds_json = json.dumps(user_model.extra_data.friends)
     except:
         pass
     return render_to_response('done.html', {

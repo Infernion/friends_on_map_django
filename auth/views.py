@@ -20,7 +20,7 @@ def login(request):
 @login_required
 def done(request):
     """Login complete view, displays user data"""
-    user_model = None
+    user_model, frinds_json = None, None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
     except:

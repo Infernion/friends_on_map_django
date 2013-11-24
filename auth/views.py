@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import login_required
 from social.apps.django_app.default.models import DjangoStorage
-import json
+from json import  dumps
 
 
 def login(request):
@@ -26,7 +26,8 @@ def done(request):
     except:
         pass
     if user_model:
-        frinds_json = json.dumps(user_model.extra_data['friends'])
+        frinds_json = dumps(user_model.extra_data['friends'])
+        print frinds_json
     return render_to_response('done.html', {
         'friends': frinds_json,
         'user_model': user_model,

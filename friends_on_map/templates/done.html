@@ -50,7 +50,7 @@
 {% block content %}
 <script type="text/javascript">
        $(document).ready(function() {
-          var json1 = {{ user_model.extra_data.friends }};
+          var json1 = {{ friends_json }};
         //$.getJSON("", function(json1) {
           $.each(json1, function(key, data) {
             var latLng = new google.maps.LatLng(data.current_location.latitude, data.current_location.longitude );

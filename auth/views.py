@@ -23,11 +23,11 @@ def done(request):
     user_model, frinds_json = None, None
     try:
         user_model = DjangoStorage.user.objects.get(user=request.user)
+        if user_model:
+            frinds_json = dumps(user_model.extra_data['friends'])
     except:
         pass
-    if user_model:
-        frinds_json = dumps(user_model.extra_data['friends'])
-        print frinds_json
+
     return render_to_response('done.html', {
         'friends': frinds_json,
         'user_model': user_model,

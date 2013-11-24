@@ -35,13 +35,14 @@
                     "{{ user_model.extra_data.user_info.pic_big }}");
 
                 {% if backends.associated %}
-                    {% for friend in friends %}
-                        addMarker("{{ friend.current_location.latitude }}",
-                                "{{ friend.current_location.longitude }}",
-                                "{{ friend.name }}",
-                                "{{ friend.current_location.namee }}",
-                                "{{ friend.pic_square }}");
-                    {% endfor %}
+                    var json1 = {{ friends|safe }};
+                    $.each(json1, function(key, data){
+                    addMarker("{{ data.current_location.latitude }}",
+                        "{{ data.current_location.longitude }}",
+                        "{{ data.name }}",
+                        "{{ data.current_location.name }}",
+                        "{{ data.pic_square }}");
+                    });
                 {% endif %}
         }
 

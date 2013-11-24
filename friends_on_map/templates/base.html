@@ -35,15 +35,7 @@
                     "{{ user_model.extra_data.user_info.pic_big }}");
 
                 {% if backends.associated %}
-                    var json1 = {{ friends|safe }};
-                    $.each(json1, function(key, data){
-                    addMarker(data.current_location.latitude,
-                        data.current_location.longitude,
-                        data.name,
-                        data.current_location.name,
-                        data.pic_square);
-                        console.log(data.name);
-                    });
+
                 {% endif %}
         }
 

@@ -2,52 +2,20 @@
 {% load url from future %}
 {% load i18n %}
 {% block scripts %}
-{#<script type="text/javascript">#}
-{#       $(document).ready(function() {#}
-{#           var json1 = {{ friends|safe }};#}
-{#           $.each(json1, function(key, data) {#}
-{#               document.write(#}
-{#               addMarker("{{ data.current_location.latitude }}",#}
-{#                        "{{ data.current_location.longitude }}",#}
-{#                        "{{ data.name }}",#}
-{#                        "{{ data.current_location.name }}",#}
-{#                        "{{ data.pic_square }}"))#}
-{#               });#}
-{#           addMarker("-82.471829", "-118.857425", "test", "Kiev", "http://cs417317.vk.me/v417317365/c921/wN8DBbo0PdI.jpg")#}
-{#       });#}
+<script type="text/javascript">
+       $(document).ready(function() {
+           var json1 = {{ friends|safe }};
+                    $.each(json1, function(key, data){
+                    addMarker(data.current_location.latitude,
+                        data.current_location.longitude,
+                        data.name,
+                        data.current_location.name,
+                        data.pic_square);
+                        console.log(data.name);
+                    });
+       });
 
-{#        $.getJSON("", function(json1) {#}
-{#          $.each(json1, function(key, data) {#}
-{#          var latLng = new google.maps.LatLng(data.current_location.latitude, data.longitude);#}
-{#          console.log(data.current_location.latitude)#}
-{#            /*Creating info window and show after click on marker*/#}
-{#            var contentString = '<div id="content">'+#}
-{#              '<div id="siteNotice">'+#}
-{#              '</div>'+#}
-{#              '<p>'+ data.name +'</p>'+#}
-{#              '<div id="bodyContent">'+#}
-{#              '<img src="'+ data.photo +'">'+#}
-{#              '<p>'+ data.current_location.name +'</p>'+#}
-{#              '<href="http://vk.com/id'+ data.uid + '">'+#}
-{#              '</div>'+#}
-{#              '</div>';#}
-{#            var infowindow = new google.maps.InfoWindow({#}
-{#                content: contentString#}
-{#            });#}
-{#              /* Creating a marker and putting it on the map*/#}
-{#            var marker = new google.maps.Marker({#}
-{#                position: latLng,#}
-{#                title: data.name,#}
-{#                title: "test",#}
-{#            });#}
-{#            marker.setMap(map);#}
-{##}
-{#            google.maps.event.addListener(marker, 'click', function() {#}
-{#                infowindow.open(map,marker);#}
-{#            });#}
-{#         // });#}
-{#        });#}
-{#      });#}
+
 </script>
 {% endblock %}
 

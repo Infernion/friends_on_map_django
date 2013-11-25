@@ -48,8 +48,8 @@ TIME_ZONE = 'Europe/Kiev'
 
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
-    ('ru', 'Russian'),
     ('en', 'English'),
+    ('ru', 'Russian'),
 )
 
 SITE_ID = 1
@@ -173,6 +173,7 @@ AUTHENTICATION_BACKENDS = (
 )
 LOGIN_REDIRECT_URL = '/done'
 LOGIN_URL = '/login/'
+LOGIN_ERROR_URL = '/login-error/'
 URL_PATH = ''
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'

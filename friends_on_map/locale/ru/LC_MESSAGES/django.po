@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-26 02:57+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: settings.py:52
+msgid "English"
+msgstr ""
+
+#: settings.py:53
+msgid "Russian"
+msgstr ""
+
+#: templates/base.html:7 templates/base.html.py:96 templates/login.html:15
+msgid "Friends on Map"
+msgstr "Друзья на карте"
+
+#: templates/base.html:100 templates/login.html:10
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:101
+msgid "About"
+msgstr ""
+
+#: templates/done.html:5
+msgid "You are logged"
+msgstr ""
+
+#: templates/done.html:7
+msgid "Name"
+msgstr ""
+
+#: templates/done.html:8
+msgid "You are from"
+msgstr ""
+
+#: templates/done.html:10
+msgid "Associated"
+msgstr ""
+
+#: templates/done.html:19
+msgid "Disconnect"
+msgstr ""
+
+#: templates/done.html:23
+msgid "Associate"
+msgstr ""
+
+#: templates/login.html:6
+msgid "Login in with Facebook account"
+msgstr ""
+
+#: templates/login.html:7
+msgid "Login in with VK account"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Please correct the error below."
+#~ msgstr ""
+#~ "#-#-#-#-#  django.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "#-#-#-#-#  django.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "#-#-#-#-#  django.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "#-#-#-#-#  django.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "#-#-#-#-#  django.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+#~ "#-#-#-#-#  django.pot (PACKAGE VERSION)  #-#-#-#-#\n"

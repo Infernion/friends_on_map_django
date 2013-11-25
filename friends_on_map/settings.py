@@ -45,13 +45,16 @@ TIME_ZONE = 'Europe/Kiev'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
+from django.utils.translation import ugettext_lazy as _
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 LANGUAGES = (
-    ('en', 'English'),
-    ('ru', 'Russian'),
+    ('en', _('English')),
+    ('ru', _('Russian')),
 )
-
+LOCALE_PATHS = (
+    os.path.join(PROJECT_PATH, 'friends_on_map/locale'),
+)
 SITE_ID = 1
 
 ### Interalization ###

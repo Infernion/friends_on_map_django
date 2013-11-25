@@ -4,10 +4,10 @@
 {% block sidebar %}
 <p>{% trans "You are logged" %} in as {{ user.username }}!</p>
 <img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
-<p>{% trans "Name"%}: {{ user_model.extra_data.user_info.name }}</p>
-<p>{% trans "You are from"%}: {{ user_model.extra_data.user_info.current_location.name }} </p>
+<p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>
+<p>{% trans "You are from" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
  {% if backends.associated %}
-<p>{% trans "Associated"%}:</p>
+<p>{% trans "Associated with" %}:</p>
 <ul>
   {% for assoc in backends.associated %}
     <li>
@@ -18,9 +18,10 @@
  <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">
      {% trans "Disconnect" %}</a>
 {% endif %}
-{#    <ul>{{ assoc.provider }}</ul>#}
-{% if backends.not_associated %}
-<p>{% trans "Associate"%}:</p>
+    <ul>{{ assoc.provider }}</ul>
+
+ {% if backends.not_associated and user.username == "admin" %}
+<p>{% trans "Associate" %}:</p>
 <ul>
   {% for name in backends.not_associated %}
     <li>

@@ -15,7 +15,7 @@
     </li>
   {% endfor %}
 </ul>
- <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">
+{# <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">#}
      {% trans "Disconnect" %}</a>
 {% endif %}
     <ul>{{ assoc.provider }}</ul>

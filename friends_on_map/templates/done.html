@@ -7,7 +7,7 @@
 <p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>
 <p>{% trans "You are from" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
 <p>{% trans "Associated with" %}: {{ backends.associated.0.provider }} </p>
-{# {% if backends.associated %}#}
+{% if backends.associated %}
 {#<p>{% trans "Associated with" %}:</p>#}
 {#<ul>#}
 {#  {% for assoc in backends.associated %}#}
@@ -17,7 +17,7 @@
 {#  {% endfor %}#}
 {#</ul>#}
  <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">{% trans "Disconnect" %}</a>
-{#{% endif %}#}
+{% endif %}
     <ul>{{ assoc.provider }}</ul>
 
 {# {% if backends.not_associated and user.username == "admin" %}#}

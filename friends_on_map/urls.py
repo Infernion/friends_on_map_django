@@ -14,3 +14,4 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$','django.views.static.serve',
         {'document_root':'/home/infernion/Dev/friends_on_map/media'}),
 )
+

@@ -9,6 +9,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/static/css/style.css" rel="stylesheet" media="screen">
     <script language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    {% block mapJS %}
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M&sensor=false">
     </script>
@@ -80,7 +81,8 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    {% block scripts %}{% endblock %}
+    {% endblock %}
+{#    {% block scripts %}{% endblock %}#}
     {% block head_scripts %}{% endblock %}
   </head>
 
@@ -93,12 +95,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{% trans "Friends on Map" %}</a>
+          <a class="navbar-brand" href="/login">{% trans "Friends on Map" %}</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">{% trans "Home" %}</a></li>
-            <li><a href="#about">{% trans "About" %}</a></li>
+            <li class="active"><a href="/login">{% trans "Home" %}</a></li>
+            <li><a href="/about">{% trans "About" %}</a></li>
           </ul>
           <ul class="nav navbar-right"><!-- Set language start -->
             <form action="/i18n/setlang/" class="active" method="post">
@@ -120,8 +122,10 @@
 
         <div class="col-xs-12 col-sm-9">
            <div class="jumbotron">
+               {% block content %}
             <div id="map-canvas"></div>
            </div>
+                {% endblock %}
         </div>
 
      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">

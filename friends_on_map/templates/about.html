@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% load url from future %}
 {% load i18n %}
-{% block mapJS %}
-{% endblock %}
+{% block head-map %}{% endblock %}
 {% block content %}
-    test2
-    <div class="col=xs6"> test</div>
+    <div class="text-center">
+        <a href="" class="list-group-item"><img src="/static/img/github.png">{% trans "To see source code visit GutHub" %} </a>
+    </div>
 {% endblock %}
 {% block sidebar %}
-<p>{% trans "You are logged" %} in as {{ user.username }}!</p>
-<img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
-<p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>
-<p>{% trans "You are from" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
+    <p>This service created for people who want see friends on map</p>
+    <p>To contact with author click to next buttons:</p>
+    <a href="https://www.facebook.com/Infernion"class="list-group-item"><img class="text-center" src="/static/img/fb.png"></a> <br />
+    <a href="vk.com/infernion" class="list-group-item"><img class="text-center" src="/static/img/vk.png"></a> <br />
+{% endblock %}
+{#{% block sidebar %}#}
+{#<p>{% trans "You are logged" %} in as {{ user.username }}!</p>#}
+{#<img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">#}
+{#<p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>#}
+{#<p>{% trans "You are from" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>#}
 {# {% if backends.associated %}#}
 {#<p>{% trans "Associated with" %}:</p>#}
 {#<ul>#}
@@ -21,9 +27,9 @@
 {#    </li>#}
 {#  {% endfor %}#}
 {#</ul>#}
- <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">{% trans "Disconnect" %}</a>
+{# <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">{% trans "Disconnect" %}</a>#}
 {#{% endif %}#}
-    <ul>{{ assoc.provider }}</ul>
+{#    <ul>{{ assoc.provider }}</ul>#}
 
 {# {% if backends.not_associated and user.username == "admin" %}#}
 {#<p>{% trans "Associate" %}:</p>#}
@@ -37,4 +43,4 @@
 {#{% endif %}#}
 
 <div id="result"></div>
-{% endblock %}
+{#{% endblock %}#}

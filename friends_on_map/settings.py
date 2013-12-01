@@ -4,7 +4,7 @@ import dj_database_url
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -67,9 +67,10 @@ MEDIA_ROOT = ''
 MEDIA_URL = ''
 
 ### Static ###
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
+    #'/home/infernion/Dev/friends_on_map/friends_on_map/static/',
     os.path.join(PROJECT_PATH, 'static'),
 )
 

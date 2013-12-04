@@ -40,7 +40,7 @@
                     var json1 = {{ friends|safe }};
                     $.each(json1, function(key, data){
 
-                        if (!data.current_location.latitude) {
+                        try {
                             console.log(data.current_location.latitude);
                             addMarker(data.current_location.latitude,
                                     data.current_location.longitude,
@@ -48,7 +48,10 @@
                                     data.current_location.name,
                                     data.pic_square);
                                     console.log(data.name);
-                        };
+                        }
+                        catch (e){
+                            console.log(e);
+                        }
 
                     });
                 {% endif %}

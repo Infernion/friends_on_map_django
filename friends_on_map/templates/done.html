@@ -2,35 +2,36 @@
 {% load url from future %}
 {% load i18n %}
 {% block sidebar %}
-<p>{% trans "You are logged" %} in as {{ user.username }}!</p>
-<img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
-<p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>
-<p>{% trans "Address" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
-<p>{% trans "Associated with" %}: {{ backends.associated.0.provider }} </p>
-{% if backends.associated %}
-{#<p>{% trans "Associated with" %}:</p>#}
-{#<ul>#}
-{#  {% for assoc in backends.associated %}#}
-{#    <li>#}
-{#      {{ assoc.provider }} (<a href="{% url 'social:disconnect_individual' assoc.provider assoc.id %}" class="disconnect">Disconnect</a>)#}
-{#    </li>#}
-{#  {% endfor %}#}
-{#</ul>#}
- <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">{% trans "Disconnect" %}</a>
-{% endif %}
-    <ul>{{ assoc.provider }}</ul>
+<div class="text-center">
+    <p>{% trans "You are logged" %} in as {{ user.username }}!</p>
+    <img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
+    <p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>
+    <p>{% trans "Address" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
+    <p>{% trans "Associated with" %}: {{ backends.associated.0.provider }} </p>
+    {% if backends.associated %}
+    {#<p>{% trans "Associated with" %}:</p>#}
+    {#<ul>#}
+    {#  {% for assoc in backends.associated %}#}
+    {#    <li>#}
+    {#      {{ assoc.provider }} (<a href="{% url 'social:disconnect_individual' assoc.provider assoc.id %}" class="disconnect">Disconnect</a>)#}
+    {#    </li>#}
+    {#  {% endfor %}#}
+    {#</ul>#}
+     <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">{% trans "Disconnect" %}</a>
+    {% endif %}
+        <ul>{{ assoc.provider }}</ul>
 
-{% if backends.not_associated and user.username == "admin" %}
-<p>{% trans "Associate" %}:</p>
-<ul>
-  {% for name in backends.not_associated %}
-    <li>
-      <a href="{% url 'social:begin' name %}">{{ name }}</a>
-    </li>
-  {% endfor %}
-</ul>
-{% endif %}
-
+    {% if backends.not_associated and user.username == "admin" %}
+    <p>{% trans "Associate" %}:</p>
+    <ul>
+      {% for name in backends.not_associated %}
+        <li>
+          <a href="{% url 'social:begin' name %}">{{ name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+</div>
 <div id="result"></div>
 {% endblock %}
 

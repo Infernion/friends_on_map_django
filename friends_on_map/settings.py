@@ -4,7 +4,7 @@ import dj_database_url
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -64,7 +64,7 @@ USE_TZ = True
 
 ### Media ###
 MEDIA_ROOT = ''
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 ### Static ###
 STATIC_ROOT = 'static'
@@ -81,8 +81,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

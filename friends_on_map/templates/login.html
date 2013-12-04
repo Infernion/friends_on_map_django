@@ -3,8 +3,10 @@
 {% load url from future %}
 
 {% block sidebar %}
-<a href="{% url 'social:begin' "facebook" %}"class="list-group-item"><img src="/static/img/fb.png"> {% trans "Login in with Facebook account" %}</a> <br />
-<a href="{% url 'social:begin' "vk-oauth2" %}" class="list-group-item"><img src="/static/img/vk.png"> {% trans "Login in with VK account" %} </a> <br />
+    <p> {% trans "Login in with Facebook account" %} </p>
+<a href="{% url 'social:begin' "facebook" %}"class="list-group-item text-center"><img src="/static/img/fb.png"></a> <br />
+    <p> {% trans "Login in with VK account" %} </p>
+<a href="{% url 'social:begin' "vk-oauth2" %}" class="list-group-item text-center"><img src="/static/img/vk.png"> </a> <br />
 {#    {% get_current_language as LANGUAGE_CODE %}#}
 {#    {{ LANGUAGE_CODE }}#}
 {#    <p>{% trans "Home" %}</p>#}

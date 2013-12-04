@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-26 02:57+0200\n"
+"POT-Creation-Date: 2013-12-04 21:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,55 +21,68 @@ msgstr ""
 
 #: settings.py:52
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: settings.py:53
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
-#: templates/base.html:7 templates/base.html.py:96 templates/login.html:15
+#: templates/about.html:5
+msgid "To see source code visit GitHub"
+msgstr "Что бы увидить искходные коды зайдите на GitHub"
+
+#: templates/about.html:10
+msgid "This service created for people who want see their friends on map."
+msgstr ""
+"Этот ресурс создан для людей которые хотят увидеть местоположение своих друзей."
+
+#: templates/about.html:12
+msgid "Author"
+msgstr "Автор"
+
+#: templates/base.html:8 templates/base.html.py:96
 msgid "Friends on Map"
 msgstr "Друзья на карте"
 
-#: templates/base.html:100 templates/login.html:10
+#: templates/base.html:100
 msgid "Home"
-msgstr ""
+msgstr "Начало"
 
 #: templates/base.html:101
 msgid "About"
-msgstr ""
+msgstr "Про сервис"
 
 #: templates/done.html:5
 msgid "You are logged"
-msgstr ""
+msgstr "Вы вошли"
 
 #: templates/done.html:7
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: templates/done.html:8
-msgid "You are from"
-msgstr ""
+msgid "Address"
+msgstr "Адрес"
 
-#: templates/done.html:10
-msgid "Associated"
-msgstr ""
+#: templates/done.html:9
+msgid "Associated with"
+msgstr "Вошли с помощью"
 
 #: templates/done.html:19
 msgid "Disconnect"
-msgstr ""
+msgstr "Рассоединить"
 
-#: templates/done.html:23
+#: templates/done.html:24
 msgid "Associate"
-msgstr ""
+msgstr "Подключить"
 
 #: templates/login.html:6
 msgid "Login in with Facebook account"
-msgstr ""
+msgstr "Войти с помощью акаунта Facebook"
 
-#: templates/login.html:7
+#: templates/login.html:8
 msgid "Login in with VK account"
-msgstr ""
+msgstr "Войти с помощью акаунта В Контакте"
 
 #, fuzzy
 #~ msgid "Please correct the error below."

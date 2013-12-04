@@ -40,4 +40,7 @@ def home(request):
     return redirect('done')
 
 def about(request):
-    return render_to_response('about.html')
+    return render_to_response('about.html', {
+        'vk_uid': getattr(settings, 'SOCIAL_AUTH_VK_OAUTH2_KEY', None),
+        'fb_uid': getattr(settings, 'SOCIAL_AUTH_FACEBOOK_KEY', None)
+    }, RequestContext(request))

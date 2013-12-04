@@ -53,7 +53,7 @@ LANGUAGES = (
     ('ru', _('Russian')),
 )
 LOCALE_PATHS = (
-    os.path.join(PROJECT_PATH, 'friends_on_map/locale'),
+    os.path.join(PROJECT_PATH, 'locale'),
 )
 SITE_ID = 1
 
@@ -67,10 +67,9 @@ MEDIA_ROOT = ''
 MEDIA_URL = '/media/'
 
 ### Static ###
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    #'/home/infernion/Dev/friends_on_map/friends_on_map/static/',
     os.path.join(PROJECT_PATH, 'static'),
 )
 

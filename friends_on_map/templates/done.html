@@ -5,7 +5,7 @@
 <p>{% trans "You are logged" %} in as {{ user.username }}!</p>
 <img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">
 <p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>
-<p>{% trans "You are from" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
+<p>{% trans "Address" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>
 <p>{% trans "Associated with" %}: {{ backends.associated.0.provider }} </p>
 {% if backends.associated %}
 {#<p>{% trans "Associated with" %}:</p>#}

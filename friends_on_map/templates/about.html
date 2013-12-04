@@ -1,46 +1,17 @@
 {% extends "base.html" %}
-{% load url from future %}
 {% load i18n %}
-{% block head-map %}{% endblock %}
 {% block content %}
     <div class="text-center">
-        <a href="" class="list-group-item"><img src="/static/img/github.png">{% trans "To see source code visit GutHub" %} </a>
+        <p>{% trans "To see source code visit GitHub" %}</p>
+        <a href="" class="list-group-item"><img src="/static/img/github.png"></a>
     </div>
 {% endblock %}
 {% block sidebar %}
-    <p>This service created for people who want see friends on map</p>
-    <p>To contact with author click to next buttons:</p>
-    <a href="https://www.facebook.com/Infernion"class="list-group-item"><img class="text-center" src="/static/img/fb.png"></a> <br />
-    <a href="vk.com/infernion" class="list-group-item"><img class="text-center" src="/static/img/vk.png"></a> <br />
+    <p class="text-center">{% trans "This service created for people who want see their friends on map." %}</p>
+    <div class="jumbotron">
+    <p class="text-center">{% trans "Author"%}</p>
+    <a href="https://www.facebook.com/Infernion"class="list-group-item text-center"><img src="/static/img/fb.png"></a> <br />
+    <a href="vk.com/infernion" class="list-group-item text-center"><img src="/static/img/vk.png"></a> <br />
+    </div>
 {% endblock %}
-{#{% block sidebar %}#}
-{#<p>{% trans "You are logged" %} in as {{ user.username }}!</p>#}
-{#<img class="thumbnail" src="{{ user_model.extra_data.user_info.pic_big }}" alt="">#}
-{#<p>{% trans "Name" %}: {{ user_model.extra_data.user_info.name }}</p>#}
-{#<p>{% trans "You are from" %}: {{ user_model.extra_data.user_info.current_location.name }} </p>#}
-{# {% if backends.associated %}#}
-{#<p>{% trans "Associated with" %}:</p>#}
-{#<ul>#}
-{#  {% for assoc in backends.associated %}#}
-{#    <li>#}
-{#      {{ assoc.provider }} (<a href="{% url 'social:disconnect_individual' assoc.provider assoc.id %}" class="disconnect">Disconnect</a>)#}
-{#    </li>#}
-{#  {% endfor %}#}
-{#</ul>#}
-{# <a href="{% url 'social:disconnect_individual' backends.associated.0.provider backends.associated.0.id %}" class="disconnect text-center list-group-item">{% trans "Disconnect" %}</a>#}
-{#{% endif %}#}
-{#    <ul>{{ assoc.provider }}</ul>#}
-
-{# {% if backends.not_associated and user.username == "admin" %}#}
-{#<p>{% trans "Associate" %}:</p>#}
-{#<ul>#}
-{#  {% for name in backends.not_associated %}#}
-{#    <li>#}
-{#      <a href="{% url 'social:begin' name %}">{{ name }}</a>#}
-{#    </li>#}
-{#  {% endfor %}#}
-{#</ul>#}
-{#{% endif %}#}
-
 <div id="result"></div>
-{#{% endblock %}#}

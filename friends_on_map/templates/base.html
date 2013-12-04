@@ -1,9 +1,9 @@
 {% load static %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE%}"
 <!Doctype html>
 <html xmlns="http://www.w3.org/1999/html">
   <head>
-
     <meta charset="utf-8">
     <title>{% trans "Friends on Map" %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,8 @@
     <link href="/static/css/style.css" rel="stylesheet" media="screen">
     <script language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     {% block head-map %}
-    <script type="text/javascripst"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M&sensor=false">
-    </script>
-    <script type="text/javascript">
+     <script type="text/javascript"
+             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpn1J5RZp3-Ko0wjRRlQNb0Q_DQGi951M&sensor=false&regin={{ LANGUAGE_CODE }}>
         google.maps.visualRefresh = true;
         var map;
         function initialize() {
@@ -83,6 +81,7 @@
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   {% endblock %}
+
   </head>
 
   <body>
@@ -124,7 +123,6 @@
            <div class="jumbotron">
             <div id="map-canvas">{% block content %}{% endblock %}</div>
            </div>
-
         </div>
 
      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">

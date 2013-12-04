@@ -23,16 +23,16 @@
 {% endif %}
     <ul>{{ assoc.provider }}</ul>
 
-{% if backends.not_associated and user.username == "admin" %}
-<p>{% trans "Associate" %}:</p>
-<ul>
-  {% for name in backends.not_associated %}
-    <li>
-      <a href="{% url 'social:begin' name %}">{{ name }}</a>
-    </li>
-  {% endfor %}
-</ul>
-{% endif %}
+{#{% if backends.not_associated and user.username == "admin" %}#}
+{#<p>{% trans "Associate" %}:</p>#}
+{#<ul>#}
+{#  {% for name in backends.not_associated %}#}
+{#    <li>#}
+{#      <a href="{% url 'social:begin' name %}">{{ name }}</a>#}
+{#    </li>#}
+{#  {% endfor %}#}
+{#</ul>#}
+{#{% endif %}#}
 
 <div id="result"></div>
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 21:40+0200\n"
+"POT-Creation-Date: 2013-12-05 01:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,54 +27,52 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
-#: templates/about.html:5
+#: templates/about.html:6
 msgid "To see source code visit GitHub"
 msgstr "Что бы увидить искходные коды зайдите на GitHub"
 
-#: templates/about.html:10
+#: templates/about.html:11
 msgid "This service created for people who want see their friends on map."
 msgstr ""
-"Этот ресурс создан для людей которые хотят увидеть местоположение своих друзей."
+"Этот ресурс создан для людей которые хотят увидеть местоположение своих "
+"друзей."
 
-#: templates/about.html:12
+#: templates/about.html:13
 msgid "Author"
 msgstr "Автор"
 
-#: templates/base.html:8 templates/base.html.py:96
+#: templates/base.html:8 templates/base.html.py:103
 msgid "Friends on Map"
 msgstr "Друзья на карте"
 
-#: templates/base.html:100
+#: templates/base.html:107
 msgid "Home"
 msgstr "Начало"
 
-#: templates/base.html:101
+#: templates/base.html:108
 msgid "About"
 msgstr "Про сервис"
 
-#: templates/done.html:5
-msgid "You are logged"
-msgstr "Вы вошли"
+#: templates/done.html:6
+#, fuzzy
+msgid "You are logged in as "
+msgstr "Вы вошли как "
 
-#: templates/done.html:7
+#: templates/done.html:8
 msgid "Name"
 msgstr "Имя"
 
-#: templates/done.html:8
+#: templates/done.html:9
 msgid "Address"
 msgstr "Адрес"
 
-#: templates/done.html:9
+#: templates/done.html:10
 msgid "Associated with"
 msgstr "Вошли с помощью"
 
-#: templates/done.html:19
+#: templates/done.html:20
 msgid "Disconnect"
 msgstr "Рассоединить"
-
-#: templates/done.html:24
-msgid "Associate"
-msgstr "Подключить"
 
 #: templates/login.html:6
 msgid "Login in with Facebook account"
@@ -83,6 +81,9 @@ msgstr "Войти с помощью акаунта Facebook"
 #: templates/login.html:8
 msgid "Login in with VK account"
 msgstr "Войти с помощью акаунта В Контакте"
+
+#~ msgid "Associate"
+#~ msgstr "Подключить"
 
 #, fuzzy
 #~ msgid "Please correct the error below."

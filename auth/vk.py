@@ -90,7 +90,7 @@ class GetVkData(object):
         response = urllib2.urlopen(url).read()
         self.last_time = time.clock()
         #print (json.loads(response))
-        if method == 'friends.get' or method == 'places.getCountryById':
+        if method in ['friends.get', 'places.getCountryById']:
             try:
                 return (json.loads(response))['response']  # If use get method return all item in value
             except IndexError or KeyError:
@@ -124,7 +124,7 @@ class GetVkData(object):
                                     'uid': field['uid'], 'pic_square': field['photo']}
                     memcache.set('f_data: %s' % field['uid'], data)
                     friends.append(data)
-                elif 'city' not in field:
+                else:
                     #logging.warning('city_not_in_field')
                     data = {'name': self.format(field, 'first_name', 'last_name'),
                                     'current_location': {
